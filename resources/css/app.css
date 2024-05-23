@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Ramabhadra&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .clip-f-b {
+        animation: clip-f-b-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .clip-f-l {
+        animation: clip-f-l-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .clip-f-r {
+        animation: clip-f-r-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .carousel-t-r {
+        animation: carousel-t-r-animation 7s linear infinite;
+    }
+    .carousel-t-l {
+        animation: carousel-t-l-animation 20s linear infinite;
+    }
+
+    .card {
+        animation: card-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .card-enter {
+        animation: card-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply text-text-light;
+    font-family: "Ramabhadra", sans-serif;
+    line-height: "100%";
+}
+
+h1 {
+    @apply text-9xl;
+}
+
+h2 {
+    @apply text-6xl;
+}
+
+p {
+    @apply text-4xl text-text-light;
+    font-family: "Archivo", sans-serif;
+}
+
+.bg-pattern {
+    background-image: radial-gradient(#c9cfec 3px, transparent 3px);
+    background-size: 92.5px 92.5px;
+}
+
+@keyframes card-enter {
+    from {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
+@keyframes card-exit {
+    from {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+}
+
+@keyframes carousel-t-r-animation {
+    from {
+        transform: translate(calc(-40% - 0.5rem));
+    }
+    to {
+        transform: translate(calc(-10%));
+    }
+}
+
+@keyframes carousel-t-l-animation {
+    from {
+        transform: translate(calc(0%));
+    }
+    to {
+        transform: translate(calc(-50% - 1rem));
+    }
+}
+
+@keyframes clip-f-l-animation {
+    0% {
+        transform: translateX(-100%);
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+    100% {
+        transform: translateX(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
+@keyframes clip-f-r-animation {
+    0% {
+        transform: translateX(100%);
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    100% {
+        transform: translateX(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+
+@keyframes clip-f-b-animation {
+    0% {
+        transform: translateY(100%);
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+    100% {
+        transform: translateY(0%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
