@@ -34,6 +34,9 @@ export default {
                 50: "50px",
                 icon: "10px",
             },
+            transitionTimingFunction: {
+                snappy: "cubic-bezier(0.16, 1, 0.3, 1)",
+            },
         },
     },
     plugins: [],

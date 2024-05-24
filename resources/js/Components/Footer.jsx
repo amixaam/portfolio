@@ -6,7 +6,7 @@ function Footer() {
     const year = CalcYo();
 
     return (
-        <footer className="clip-f-b flex flex-shrink-0 flex-row flex-nowrap items-center gap-8">
+        <footer className="flex flex-shrink-0 flex-row flex-nowrap items-center gap-8">
             <p className="clip-f-l text-nowrap">
                 {year}yo Software engineer • designer
             </p>
@@ -16,7 +16,7 @@ function Footer() {
                         <Icon
                             key={i}
                             size={64}
-                            className="clip-f-r"
+                            // className="clip-f-r"
                             icon="arrow-left"
                         />
                     ))}

@@ -3,8 +3,8 @@ import { IconPaths } from "./IconList";
 
 function Icon({
     icon = "arrow-right",
-    fill = "fill-text-light",
-    stroke = "bg-secondary-light",
+    fill = "fill-text-light dark:fill-text-dark",
+    stroke = "bg-secondary-light dark:bg-secondary-dark",
     className = "",
     size = 64,
 }) {

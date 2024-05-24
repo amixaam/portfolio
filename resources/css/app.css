@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 @layer components {
     .clip-f-b {
         animation: clip-f-b-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
@@ -15,7 +21,7 @@
         animation: clip-f-r-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .carousel-t-r {
-        animation: carousel-t-r-animation 7s linear infinite;
+        animation: carousel-t-r-animation 12s linear infinite;
     }
     .carousel-t-l {
         animation: carousel-t-l-animation 20s linear infinite;
@@ -27,6 +33,33 @@
     .card-enter {
         animation: card-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
+    .blog-styles {
+        @apply space-y-8;
+        p {
+            @apply text-balance text-4xl leading-snug tracking-wide;
+        }
+        a {
+            @apply text-link-light hover:underline dark:text-link-dark;
+        }
+    }
+
+    .bg-pattern {
+        background-image: radial-gradient(
+            theme("colors.secondary.light") 3px,
+            transparent 3px
+        );
+        background-size: 92.5px 92.5px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .bg-pattern {
+            background-image: radial-gradient(
+                theme("colors.secondary.dark") 3px,
+                transparent 3px
+            );
+        }
+    }
 }
 
 h1,
@@ -35,13 +68,13 @@ h3,
 h4,
 h5,
 h6 {
-    @apply text-text-light;
+    @apply text-text-light dark:text-text-dark;
     font-family: "Ramabhadra", sans-serif;
     line-height: "100%";
 }
 
 h1 {
-    @apply text-9xl;
+    @apply text-8xl;
 }
 
 h2 {
@@ -49,13 +82,8 @@ h2 {
 }
 
 p {
-    @apply text-4xl text-text-light;
+    @apply text-4xl text-text-light dark:text-text-dark;
     font-family: "Archivo", sans-serif;
-}
-
-.bg-pattern {
-    background-image: radial-gradient(#c9cfec 3px, transparent 3px);
-    background-size: 92.5px 92.5px;
 }
 
 @keyframes card-enter {
@@ -78,10 +106,10 @@ p {
 
 @keyframes carousel-t-r-animation {
     from {
-        transform: translate(calc(-40% - 0.5rem));
+        transform: translate(calc(-50%));
     }
     to {
-        transform: translate(calc(-10%));
+        transform: translate(calc(0% + 1rem));
     }
 }
 
