@@ -1,5 +1,4 @@
 import React from "react";
-import MainLayout from "../Layouts/MainLayout";
 import Icon from "../../../public/icons/Icon";
 import { BoxLink } from "../Components/BoxLink";
 import ScreenLayout from "../Layouts/ScreenLayout";
@@ -18,29 +17,29 @@ function About() {
                             className="hand-wave"
                         />
                     </div>
-                    <div className="blog-styles space-y-8">
+                    <div className="blog-styles max-w-[800px] space-y-8">
                         <p>
-                            I’m a motivated guy, that’s always up for learning
-                            new things! I work well within a team of people, and
-                            i have for most of my life!
+                            I’m a passionate software engineer from Latvia,
+                            always eager to learn. I play the piano and flute,
+                            and have contributed to orchestral bands and choirs.
                         </p>
                         <p>
-                            I’m musical - I’ve played the piano and flute for
-                            many years, contributed in orchestral bands and
-                            choirs.
+                            Programming has been my favorite activity since I
+                            was 10, starting with Scratch and progressing to
+                            Python, C#, PHP, JavaScript, and Kotlin. My
+                            relentless pursuit of excellence drives my success.
                         </p>
-                        {/* <p>
-                            I’m relentless - Programming has been my favorite
-                            thing since i was 10 years old. I started with the
-                            child-friendly Scratch, and moved on to bigger
-                            languages, such as Python, C#, PHP, JavaScript and
-                            Kotlin.
-                        </p> */}
                     </div>
-                    <div className="flex flex-col gap-4 ">
-                        <BoxLink icon="school" href={route("Education")}>My education</BoxLink>
-                        <BoxLink icon="globe" href={route("Projects")}>My projects</BoxLink>
-                        <BoxLink icon="link" href={route("Contacts")}>Contact me</BoxLink>
+                    <div className="grid grid-cols-3 gap-4 ">
+                        <BoxLink icon="school" href={route("Education")}>
+                            Education
+                        </BoxLink>
+                        <BoxLink icon="globe" href={route("Projects")}>
+                            Projects
+                        </BoxLink>
+                        <BoxLink icon="link" href={route("Contacts")}>
+                            Contact me
+                        </BoxLink>
                     </div>
                 </div>
 

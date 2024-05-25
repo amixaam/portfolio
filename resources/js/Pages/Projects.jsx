@@ -12,19 +12,20 @@ const testData = [
         content: (
             <>
                 <p>
-                    Flora is an opinionated and design-first local music player,
-                    made with <a href="">React Native</a>.
+                    Flora is an opinionated, design-first local music player
+                    built with <a href="">React Native</a>. It combines the best
+                    features from various music apps to create the perfect UI
+                    and UX tailored to my preferences.
                 </p>
                 <p>
-                    Some of the main React / Native libraries that are used were{" "}
-                    <a href="">Zustand</a>,{" "}
+                    Key Technologies that are used are <a href="">Zustand</a>,{" "}
                     <a href="">React Native Track Player</a>,{" "}
                     <a href="">React Native Reanimated</a> and{" "}
                     <a href="">React router</a>.
                 </p>
                 <p>
-                    My goal was to create the perfect UI and UX for myself
-                    personally.
+                    My goal was to craft an exceptional user experience by
+                    focusing on design and usability.
                 </p>
             </>
         ),
@@ -48,17 +49,37 @@ const testData = [
     {
         name: "Ruckas Muiža",
         year: "2023-2024",
-        technologies: ["laravel"],
+        technologies: [
+            "laravel",
+            "alpine",
+            "saas",
+            "livewire",
+            "php",
+            "javascript",
+        ],
         content: (
-            <p>
-                Made with Inertia js, and with it’s unique design, it’s a wonder
-                to explore the project all the time.
-            </p>
+            <>
+                <p>
+                    Ruckas Muiža is a team project built using the Tallstack
+                    framework for Ruckas Muiža. I took on the role of design
+                    lead, ensuring the website’s aesthetics and user experience
+                    were top-notch.
+                </p>
+                <p>
+                    Key technologies used are <a href="">Laravel</a>,{" "}
+                    <a href="">Alpinejs</a>, <a href="">Sass</a> and{" "}
+                    <a href="">Livewire</a>.
+                </p>
+                <p>
+                    Collaboratively created with a focus on elegant design and
+                    functionality.
+                </p>
+            </>
         ),
         links: [
             {
-                link: "https://github.com/amixaam/flora-remake",
-                name: "GitHub repo",
+                link: "ruckasmuiza.lv",
+                name: "Website",
             },
             {
                 link: "",
@@ -103,13 +124,16 @@ const testData = [
         content: (
             <>
                 <p>
-                    photo-gallery is a personal image gallery, for people to
-                    view.
+                    photo-gallery is a personal image gallery designed for
+                    sharing and viewing photos. It features a unique design and
+                    robust admin tools.
                 </p>
                 <p>
-                    Made with Inertia js, and with it’s unique design, it’s a
-                    wonder to explore the project all the time.
+                    Key technologies used are <a href="">Laravel</a>,{" "}
+                    <a href="">React</a>, <a href="">Inertiajs</a> and{" "}
+                    <a href="">Tailwind</a>.
                 </p>
+                <p>Explore and enjoy the beautifully crafted interface.</p>
             </>
         ),
         links: [
@@ -135,21 +159,25 @@ const testData = [
     {
         name: "Typomancer",
         year: "2024",
-        technologies: ["laravel"],
+        technologies: ["unity", "laravel", "stripe", "csharp", "php"],
         content: (
-            <p>
-                Made with Inertia js, and with it’s unique design, it’s a wonder
-                to explore the project all the time.
-            </p>
+            <>
+                <p>
+                    Typomancer is an online Unity 2D endless dungeon runner
+                    game. It features Laravel as the backend to manage logins,
+                    leaderboards, and Stripe integration.
+                </p>
+                <p>
+                    Key technologies used are <a href="">Unity</a>,{" "}
+                    <a href="">Laravel</a> and <a href="">Stripe</a>.
+                </p>
+                <p>Enjoy seamless gameplay with robust backend support.</p>
+            </>
         ),
         links: [
             {
                 link: "https://github.com/amixaam/flora-remake",
                 name: "GitHub repo",
-            },
-            {
-                link: "",
-                name: "Figma design",
             },
         ],
         images: ["images/photo-gallery-promo/promo-3"],
@@ -185,11 +213,11 @@ function Projects() {
             <div className="flex flex-col gap-32">
                 {testData.map((project, key) => (
                     <ProjectItem
+                        key={key}
                         project={project}
                         open={key === openProject}
                         closeProject={() => setOpenProject(null)}
                         openProject={() => setOpenProject(key)}
-                        key={key}
                     />
                 ))}
             </div>
@@ -217,7 +245,6 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
             <button
                 onMouseDown={toggleOpen}
                 className="flex w-full flex-row items-center justify-between"
-
                 // keyboard support
                 onKeyDown={(event) => {
                     if (event.key === "Enter") {
@@ -258,7 +285,9 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                             </div>
 
                             {/* text */}
-                            <div className="blog-styles">{content}</div>
+                            <div className="blog-styles max-w-[600px]">
+                                {content}
+                            </div>
 
                             {/* links */}
                             <div className="space-y-4">
@@ -268,6 +297,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                                         href={url.link}
                                         size={48}
                                         key={key}
+                                        outside={true}
                                     >
                                         {url.name}
                                     </BoxLink>
