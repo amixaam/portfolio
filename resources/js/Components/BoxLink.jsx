@@ -1,7 +1,13 @@
 import { Link } from "@inertiajs/inertia-react";
 import Icon from "../../../public/icons/Icon";
 
-export const BoxLink = ({ href, children, icon, trailingIcon = true }) => {
+export const BoxLink = ({
+    href,
+    children,
+    icon,
+    size = 48,
+    trailingIcon = true,
+}) => {
     return (
         <Link
             href={href}
@@ -10,7 +16,7 @@ export const BoxLink = ({ href, children, icon, trailingIcon = true }) => {
             }}
             className="group flex h-fit w-fit flex-row items-center gap-8 transition-all hover:ml-4"
         >
-            <Icon className="rounded-icon p-2" icon={icon} />
+            <Icon className="rounded-icon p-2" icon={icon} size={size} />
             <p>{children}</p>
             {trailingIcon && (
                 <Icon

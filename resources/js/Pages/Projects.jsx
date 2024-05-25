@@ -46,6 +46,50 @@ const testData = [
         ],
     },
     {
+        name: "Ruckas Muiža",
+        year: "2023-2024",
+        technologies: ["laravel"],
+        content: (
+            <p>
+                Made with Inertia js, and with it’s unique design, it’s a wonder
+                to explore the project all the time.
+            </p>
+        ),
+        links: [
+            {
+                link: "https://github.com/amixaam/flora-remake",
+                name: "GitHub repo",
+            },
+            {
+                link: "",
+                name: "Figma design",
+            },
+        ],
+        images: ["images/photo-gallery-promo/promo-3"],
+    },
+    {
+        name: "ERASMUS + Lithuania youth exchange",
+        year: "2023",
+        technologies: [],
+        content: (
+            <p>
+                Made with Inertia js, and with it’s unique design, it’s a wonder
+                to explore the project all the time.
+            </p>
+        ),
+        links: [
+            {
+                link: "https://github.com/amixaam/flora-remake",
+                name: "GitHub repo",
+            },
+            {
+                link: "",
+                name: "Figma design",
+            },
+        ],
+        images: ["images/photo-gallery-promo/promo-3"],
+    },
+    {
         name: "photo-gallery",
         year: "2024",
         technologies: [
@@ -88,66 +132,150 @@ const testData = [
             "images/photo-gallery-promo/promo-3",
         ],
     },
+    {
+        name: "Typomancer",
+        year: "2024",
+        technologies: ["laravel"],
+        content: (
+            <p>
+                Made with Inertia js, and with it’s unique design, it’s a wonder
+                to explore the project all the time.
+            </p>
+        ),
+        links: [
+            {
+                link: "https://github.com/amixaam/flora-remake",
+                name: "GitHub repo",
+            },
+            {
+                link: "",
+                name: "Figma design",
+            },
+        ],
+        images: ["images/photo-gallery-promo/promo-3"],
+    },
+    {
+        name: "CENE",
+        year: "2024",
+        technologies: ["laravel"],
+        content: (
+            <p>
+                Made with Inertia js, and with it’s unique design, it’s a wonder
+                to explore the project all the time.
+            </p>
+        ),
+        links: [
+            {
+                link: "https://github.com/amixaam/flora-remake",
+                name: "GitHub repo",
+            },
+            {
+                link: "",
+                name: "Figma design",
+            },
+        ],
+        images: ["images/photo-gallery-promo/promo-3"],
+    },
 ];
 
 function Projects() {
+    const [openProject, setOpenProject] = useState(null);
     return (
         <MainLayout title={"Projects"}>
-            <div className="space-y-32">
-            {testData.map((project, key) => (
-                <ProjectItem project={project} key={key} />
-            ))}
-
+            <div className="flex flex-col gap-32">
+                {testData.map((project, key) => (
+                    <ProjectItem
+                        project={project}
+                        open={key === openProject}
+                        closeProject={() => setOpenProject(null)}
+                        openProject={() => setOpenProject(key)}
+                        key={key}
+                    />
+                ))}
             </div>
         </MainLayout>
     );
 }
 
-const ProjectItem = ({ project }) => {
+const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
     const { name, year, technologies, content, links, images } = project;
 
+    const toggleOpen = () => {
+        if (open) {
+            closeProject();
+        } else {
+            openProject();
+            setTimeout(function () {
+                document.getElementById(project.name).scrollIntoView();
+            }, 300);
+        }
+    };
+
     return (
-        <div className="grid grid-cols-2 gap-6">
+        <div className="scroll-mt-16 space-y-2" id={project.name}>
+            {/* top bar */}
+            <button
+                onMouseDown={toggleOpen}
+                className="flex w-full flex-row items-center justify-between"
+            >
+                <div className="flex flex-row items-center gap-8">
+                    <p className="w-[5ch] text-start leading-none opacity-70">
+                        {year}
+                    </p>
+                    <h2>{name}</h2>
+                </div>
+                <button>
+                    <Icon
+                        icon={open ? "chevron-up" : "chevron-down"}
+                        stroke="transparent"
+                    />
+                </button>
+            </button>
+
             {/* content */}
-            <div className="clip-f-b space-y-8">
-                <div className="space-y-4">
-                    {/* title, year */}
-                    <div className="flex flex-row items-center gap-8">
-                        <Icon />
-                        <h2>{name}</h2>
-                        <p className="opacity-70">{year}</p>
-                    </div>
-                    {/* technologies */}
-                    <div className="flex flex-row gap-4 pl-24 *:drop-shadow-lg">
-                        {technologies.map((tech, key) => (
-                            <img
-                                key={key}
-                                src={`icons/${tech}.svg`}
-                                alt={`${tech} logo`}
-                                className="rounded-icon"
-                            />
-                        ))}
+
+            {open && (
+                <div className="overflow-hidden">
+                    <div className="clip-f-t grid grid-cols-2 gap-24">
+                        <div className="space-y-8">
+                            {/* technologies */}
+                            <div className="flex flex-row gap-4">
+                                {technologies.map((tech, key) => (
+                                    <img
+                                        key={key}
+                                        src={`icons/${tech}.svg`}
+                                        alt={`${tech} logo`}
+                                        className="rounded-icon"
+                                    />
+                                ))}
+                            </div>
+
+                            {/* text */}
+                            <div className="blog-styles">{content}</div>
+
+                            {/* links */}
+                            <div className="space-y-4">
+                                {links.map((url, key) => (
+                                    <BoxLink
+                                        icon="link"
+                                        href={url.link}
+                                        size={48}
+                                        key={key}
+                                    >
+                                        {url.name}
+                                    </BoxLink>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* image */}
+                        <div className="flex items-center">
+                            {/* make this into a seperate component */}
+                            <ImageCarousel images={images} />
+                        </div>
                     </div>
                 </div>
-
-                {/* text */}
-                <div className="blog-styles pl-24">{content}</div>
-
-                {/* links */}
-                <div className="space-y-4 pl-24">
-                    {links.map((url, key) => (
-                        <BoxLink icon="link" href={url.link} key={key}>
-                            {url.name}
-                        </BoxLink>
-                    ))}
-                </div>
-            </div>
-
-            {/* image */}
-            <div className="flex items-center justify-center">
-                {/* make this into a seperate component */}
-                <ImageCarousel images={images} />
-            </div>
+            )}
         </div>
     );
 };

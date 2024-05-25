@@ -19,10 +19,10 @@ export const ImageCarousel = ({ images = [] }) => {
     }, []);
 
     return (
-        <div className="relative aspect-square w-[90%]">
+        <div className="relative aspect-square w-[800px]">
             <div className="relative aspect-square overflow-hidden rounded-50">
                 <div
-                    className="ease-snappy flex  flex-shrink-0 flex-grow-0 flex-row transition-transform duration-300"
+                    className="flex flex-shrink-0  flex-grow-0 flex-row transition-transform duration-300 ease-snappy"
                     style={{
                         transform: `translateX(-${selectedImage * 100}%)`,
                     }}
@@ -38,7 +38,8 @@ export const ImageCarousel = ({ images = [] }) => {
                                     : `${image}.png`
                             }
                             alt=""
-                            className="clip-f-b"
+                            className="clip-f-t"
+                            key={key}
                         />
                     ))}
                 </div>
@@ -68,7 +69,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
         <>
             <div className="absolute bottom-0 top-0 flex h-full w-full items-center">
                 <button
-                    className=" clip-f-b absolute -left-8 h-fit transition-all hover:scale-95 active:-left-9 active:scale-90"
+                    className="  absolute -left-8 h-fit transition-all hover:scale-95 active:-left-9 active:scale-90"
                     onMouseDown={() => movePos(-1)}
                 >
                     <Icon
@@ -78,7 +79,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                     />
                 </button>
                 <button
-                    className="clip-f-b absolute -right-8 h-fit transition-all hover:scale-95 active:-right-9 active:scale-90"
+                    className=" absolute -right-8 h-fit transition-all hover:scale-95 active:-right-9 active:scale-90"
                     onMouseDown={() => movePos(1)}
                 >
                     <Icon
@@ -97,7 +98,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                             className="group -my-4"
                         >
                             <p
-                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"} text-6xl transition-all group-hover:brightness-200`}
+                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"} text-6xl transition-all group-hover:scale-90 group-hover:brightness-200`}
                             >
                                 •
                             </p>
