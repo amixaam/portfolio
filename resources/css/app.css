@@ -34,6 +34,10 @@ html {
         animation: carousel-t-l-animation 20s linear infinite;
     }
 
+    .hand-wave {
+        animation: hand-wave-animation 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
     .card {
         animation: card-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -43,9 +47,6 @@ html {
 
     .blog-styles {
         @apply space-y-8;
-        p {
-            @apply text-balance text-4xl leading-snug tracking-wide;
-        }
         a {
             @apply text-link-light hover:underline dark:text-link-dark;
         }
@@ -88,6 +89,19 @@ p {
     font-family: "Archivo", sans-serif;
     line-height: 46px;
     letter-spacing: 2%;
+}
+
+@keyframes hand-wave-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+
+    }
 }
 
 @keyframes card-enter {

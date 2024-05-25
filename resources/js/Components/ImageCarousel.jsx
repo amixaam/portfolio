@@ -71,6 +71,12 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                 <button
                     className="  absolute -left-8 h-fit transition-all hover:scale-95 active:-left-9 active:scale-90"
                     onMouseDown={() => movePos(-1)}
+                    onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            movePos(-1);
+                        }
+                    }}
                 >
                     <Icon
                         icon="arrow-left"
@@ -81,6 +87,12 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                 <button
                     className=" absolute -right-8 h-fit transition-all hover:scale-95 active:-right-9 active:scale-90"
                     onMouseDown={() => movePos(1)}
+                    onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            movePos(1);
+                        }
+                    }}
                 >
                     <Icon
                         icon="arrow-right"
@@ -95,10 +107,16 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                         <button
                             key={i}
                             onMouseDown={() => changePos(i)}
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter") {
+                                    event.preventDefault();
+                                    changePos(i);
+                                }
+                            }}
                             className="group -my-4"
                         >
                             <p
-                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"} text-6xl transition-all group-hover:scale-90 group-hover:brightness-200`}
+                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"} text-6xl transition-all group-hover:scale-90 group-hover:brightness-200 group-active:scale-75`}
                             >
                                 •
                             </p>

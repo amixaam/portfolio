@@ -217,6 +217,15 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
             <button
                 onMouseDown={toggleOpen}
                 className="flex w-full flex-row items-center justify-between"
+
+                // keyboard support
+                onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        toggleOpen();
+                    }
+                }}
+                tabIndex={0}
             >
                 <div className="flex flex-row items-center gap-8">
                     <p className="w-[5ch] text-start leading-none opacity-70">
@@ -224,12 +233,10 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                     </p>
                     <h2>{name}</h2>
                 </div>
-                <button>
-                    <Icon
-                        icon={open ? "chevron-up" : "chevron-down"}
-                        stroke="transparent"
-                    />
-                </button>
+                <Icon
+                    icon={open ? "chevron-up" : "chevron-down"}
+                    stroke="transparent"
+                />
             </button>
 
             {/* content */}

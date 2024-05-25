@@ -28,13 +28,13 @@ function Landing() {
             </main>
             <div className="relative">
                 <div className="clip-f-b group absolute -bottom-[128px] right-0 aspect-portrait w-[40%] transition-all duration-300">
-                    <div className="group-hover:card-enter card absolute flex w-full items-center justify-end gap-2 rounded-t-50 bg-bg-light-50 px-16 py-8 transition-all  dark:bg-bg-dark-50">
+                    <div className="group-hover:card-enter card absolute flex w-full items-center justify-end gap-2 rounded-t-50 bg-bg-light-50 px-14 py-8 transition-all  dark:bg-bg-dark-50">
                         <Icon icon="location" stroke="transparent" size={32} />
                         <p>Prague, Czech Republic</p>
                     </div>
                     <img
                         src="/images/me.webp"
-                        alt="Me in posing in Prague, Czech Republic"
+                        alt="Me posing in Prague, Czech Republic"
                         className=" h-full w-full rounded-t-50 object-cover"
                     />
                 </div>
