@@ -78,7 +78,7 @@ const testData = [
         ),
         links: [
             {
-                link: "ruckasmuiza.lv",
+                link: "https://www.ruckasmuiza.lv",
                 name: "Website",
             },
             {
