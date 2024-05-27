@@ -71,7 +71,7 @@ const EducationItem = ({
                 <p className="w-[5ch] text-start leading-none opacity-70">
                     {year}
                 </p>
-                <h2>{name}</h2>
+                <h2 className="text-start md:text-3xl xl:text-5xl">{name}</h2>
             </div>
             <Icon
                 icon={open ? "chevron-up" : "chevron-down"}

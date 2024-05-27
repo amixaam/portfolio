@@ -210,7 +210,7 @@ function Projects() {
     const [openProject, setOpenProject] = useState(null);
     return (
         <MainLayout title={"Projects"}>
-            <div className="flex flex-col gap-32">
+            <div className="flex flex-col gap-16 md:gap-32">
                 {testData.map((project, key) => (
                     <ProjectItem
                         key={key}
@@ -258,7 +258,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                     <p className="w-[5ch] text-start leading-none opacity-70">
                         {year}
                     </p>
-                    <h2>{name}</h2>
+                    <h2 className="text-start">{name}</h2>
                 </div>
                 <Icon
                     icon={open ? "chevron-up" : "chevron-down"}
@@ -270,8 +270,8 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
 
             {open && (
                 <div className="overflow-hidden">
-                    <div className="clip-f-t grid grid-cols-2 gap-24">
-                        <div className="space-y-8">
+                    <div className="clip-f-t grid row-auto gap-8 lg:gap-24 lg:grid-cols-2 lg:grid-rows-1">
+                        <div className="order-2 space-y-8 lg:order-1">
                             {/* technologies */}
                             <div className="flex flex-row gap-4">
                                 {technologies.map((tech, key) => (
@@ -306,8 +306,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                         </div>
 
                         {/* image */}
-                        <div className="flex items-center">
-                            {/* make this into a seperate component */}
+                        <div className="order-1 flex h-fit items-center lg:order-2">
                             <ImageCarousel images={images} />
                         </div>
                     </div>

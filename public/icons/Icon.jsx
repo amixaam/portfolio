@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IconPaths, smallIcons } from "./IconList";
 
 function Icon({
@@ -7,12 +7,16 @@ function Icon({
     stroke = "bg-secondary-light dark:bg-secondary-dark",
     className = "",
     size = 64,
+    minimise = false,
 }) {
+    size = window.innerWidth <= 768 && minimise ? size / 2 : size;
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             height={`${size}px`}
-            viewBox={smallIcons.includes(icon) ? "-4 -4 32 32" : "0 -960 960 960"}
+            viewBox={
+                smallIcons.includes(icon) ? "-4 -4 32 32" : "0 -960 960 960"
+            }
             width={`${size}px`}
             className={`${fill} ${stroke} ${className} flex-shrink-0`}
         >

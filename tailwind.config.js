@@ -25,7 +25,7 @@ export default {
             },
             spacing: {
                 "default-app": "64px",
-                "small-app": "16px",
+                "small-app": "32px",
             },
             aspectRatio: {
                 portrait: "0.9",

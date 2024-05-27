@@ -51,7 +51,6 @@ html {
     }
 
     .blog-styles {
-        @apply space-y-8;
         a {
             @apply text-link-light hover:underline dark:text-link-dark;
         }
@@ -79,6 +78,24 @@ html {
     }
 }
 
+@media screen and (max-width: 768px) {
+    h1 {
+        @apply text-3xl !important;
+    }
+    h2 {
+        @apply text-3xl !important;
+    }
+    p {
+        @apply text-base !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    h1 {
+        @apply text-8xl !important;
+    }
+}
+
 h1 {
     @apply text-9xl text-text-light dark:text-text-dark;
     font-family: "Ramabhadra", sans-serif;
@@ -86,7 +103,7 @@ h1 {
     letter-spacing: -3%;
 }
 
-h2 {
+h2,h3 {
     @apply text-6xl font-bold text-text-light dark:text-text-dark;
     font-family: "Archivo", sans-serif;
     line-height: 74px;

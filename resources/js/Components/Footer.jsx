@@ -16,6 +16,7 @@ function Footer() {
                         <Icon
                             key={i}
                             size={64}
+                            minimise={true}
                             // className="clip-f-r"
                             icon="arrow-left"
                         />
