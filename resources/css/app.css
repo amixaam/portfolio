@@ -92,26 +92,26 @@ html {
 
 @media screen and (min-width: 768px) and (max-width: 900px) {
     h1 {
-        @apply text-8xl !important;
+        @apply text-7xl !important;
     }
 }
 
 h1 {
-    @apply text-9xl text-text-light dark:text-text-dark;
+    @apply text-8xl text-text-light dark:text-text-dark;
     font-family: "Ramabhadra", sans-serif;
     line-height: 116.4px;
     letter-spacing: -3%;
 }
 
 h2,h3 {
-    @apply text-6xl font-bold text-text-light dark:text-text-dark;
+    @apply text-5xl font-bold text-text-light dark:text-text-dark;
     font-family: "Archivo", sans-serif;
     line-height: 74px;
     letter-spacing: -1%;
 }
 
 p {
-    @apply text-3xl font-normal text-text-light dark:text-text-dark;
+    @apply text-2xl font-normal text-text-light dark:text-text-dark;
     font-family: "Archivo", sans-serif;
     line-height: 46px;
     letter-spacing: 2%;

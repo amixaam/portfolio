@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 
 export const ImageCarousel = ({ images = [] }) => {
     const [selectedImage, setSelectedImage] = useState(0);
@@ -69,7 +69,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
         <>
             <div className="absolute bottom-0 top-0 flex h-full w-full items-center">
                 <button
-                    className="  absolute left-2 2xl:-left-8 h-fit transition-all hover:scale-95 active:-left-9 active:scale-90"
+                    className="3xl:-left-8 absolute left-2 h-fit transition-all hover:scale-95 active:-left-9 active:scale-90"
                     onMouseDown={() => movePos(-1)}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -86,7 +86,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                     />
                 </button>
                 <button
-                    className=" absolute right-2 2xl:-right-8 h-fit transition-all hover:scale-95 active:-right-9 active:scale-90"
+                    className="3xl:-right-8 absolute right-2 h-fit transition-all hover:scale-95 active:-right-9 active:scale-90"
                     onMouseDown={() => movePos(1)}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -118,7 +118,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                             className="group -my-3 lg:-my-4"
                         >
                             <h3
-                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"}  text-4xl lg:text-6xl transition-all group-hover:scale-90 group-hover:brightness-200 group-active:scale-75`}
+                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"}  text-4xl transition-all group-hover:scale-90 group-hover:brightness-200 group-active:scale-75 lg:text-6xl`}
                             >
                                 •
                             </h3>

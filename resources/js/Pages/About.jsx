@@ -1,12 +1,13 @@
 import React from "react";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 import { BoxLink } from "../Components/BoxLink";
 import ScreenLayout from "../Layouts/ScreenLayout";
+import MainLayout from "../Layouts/MainLayout";
 
 function About() {
     return (
-        <ScreenLayout title="About">
-            <div className="grid grid-rows-[1fr_2fr] gap-4 py-8 sm:grid-rows-[1fr_1fr] md:gap-24 md:py-16 lg:grid-cols-[1fr_2fr] lg:grid-rows-1 ">
+        <MainLayout title="About me">
+            <div className="grid grid-rows-[1fr_2fr] gap-4 sm:grid-rows-[1fr_1fr] md:gap-24 lg:grid-cols-[1fr_2fr] lg:grid-rows-1 ">
                 <div className="group relative max-h-fit">
                     <img
                         src="/images/me-2.webp"
@@ -62,7 +63,7 @@ function About() {
                     </div>
                 </div>
             </div>
-        </ScreenLayout>
+        </MainLayout>
     );
 }
 

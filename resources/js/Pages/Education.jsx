@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MainLayout from "../Layouts/MainLayout";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 
 const educationData = [
     {

@@ -1,6 +1,6 @@
 import React from "react";
 import ScreenLayout from "../Layouts/ScreenLayout";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 
 function Contacts() {
     return (
@@ -13,7 +13,7 @@ function Contacts() {
                 {[...Array(7)].map((_, i) => (
                     <h3
                         key={i}
-                        className={`${i % 2 === 0 ? "clip-f-l" : "clip-f-r"} top-0 select-none text-center text-4xl uppercase md:text-7xl md:leading-[0.73] lg:leading-[0.73] lg:text-8xl`}
+                        className={`${i % 2 === 0 ? "clip-f-l" : "clip-f-r"} top-0 select-none text-center text-4xl uppercase md:text-7xl md:leading-[0.73] lg:text-7xl lg:leading-[0.74]`}
                         style={{
                             opacity: 1 - i / 6.5,
                         }}
@@ -49,11 +49,9 @@ const SpecialFooter = () => {
     return (
         <div
             className="flex flex-row items-center justify-center gap-8 *:flex-shrink-0 
-						*:flex-grow-0 *:flex-nowrap *:text-nowrap *:text-[160px] lg:gap-32"
+						*:flex-grow-0 *:flex-nowrap lg:gap-32"
         >
-            <h2 className="clip-f-l hidden select-none uppercase leading-[0.75] transition-all hover:text-secondary-light lg:block dark:hover:text-secondary-dark">
-                Get in touch
-            </h2>
+            {/* <LargeText clip="clip-f-l" /> */}
             <div className="clip-f-b group flex flex-row gap-6">
                 {links.map((icon, i) => (
                     <a
@@ -71,11 +69,19 @@ const SpecialFooter = () => {
                     </a>
                 ))}
             </div>
-            <h2 className="clip-f-r hidden select-none  uppercase leading-[0.75] transition-all hover:text-secondary-light lg:block dark:hover:text-secondary-dark">
-                Get in touch
-            </h2>
+            {/* <LargeText clip="clip-f-r" /> */}
         </div>
     );
 };
+
+function LargeText({ text = "get in touch", clip = "" }) {
+    return (
+        <h2
+            className={`${clip} hidden select-none text-nowrap text-[6.5rem] uppercase leading-[0.75] transition-all lg:block`}
+        >
+            {text}
+        </h2>
+    );
+}
 
 export default Contacts;

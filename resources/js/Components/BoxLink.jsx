@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/inertia-react";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 
 export const BoxLink = ({
     href,

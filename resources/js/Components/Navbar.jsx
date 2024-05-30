@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 
 function Navbar({ title = "Roberts brinkis" }) {
     return (
@@ -8,7 +8,9 @@ function Navbar({ title = "Roberts brinkis" }) {
             <div className="hidden fill-text-light dark:fill-text-dark"></div>
             <div className="hidden"></div>
             <div className="flex flex-row items-center gap-8">
-                <h1 className="testing text-nowrap md:text-wrap lg:text-nowrap uppercase">{title}</h1>
+                <h1 className="testing text-nowrap uppercase md:text-wrap lg:text-nowrap">
+                    {title}
+                </h1>
 
                 <div className="overflow-clip">
                     <div className="carousel-t-r flex flex-shrink-0 flex-row flex-nowrap gap-8">

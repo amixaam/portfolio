@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MainLayout from "../Layouts/MainLayout";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 import { BoxLink } from "../Components/BoxLink";
 import { ImageCarousel } from "../Components/ImageCarousel";
 
@@ -270,14 +270,14 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
 
             {open && (
                 <div className="overflow-hidden">
-                    <div className="clip-f-t grid row-auto gap-8 lg:gap-24 lg:grid-cols-2 lg:grid-rows-1">
+                    <div className="clip-f-t row-auto grid gap-8 lg:grid-cols-2 lg:grid-rows-1 lg:gap-24">
                         <div className="order-2 space-y-8 lg:order-1">
                             {/* technologies */}
                             <div className="flex flex-row gap-4">
                                 {technologies.map((tech, key) => (
                                     <img
                                         key={key}
-                                        src={`icons/${tech}.svg`}
+                                        src={`images/icons/${tech}.svg`}
                                         alt={`${tech} logo`}
                                         className="rounded-icon"
                                     />
@@ -306,7 +306,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                         </div>
 
                         {/* image */}
-                        <div className="order-1 flex h-fit items-center lg:order-2">
+                        <div className="order-1 flex h-fit items-start lg:order-2">
                             <ImageCarousel images={images} />
                         </div>
                     </div>

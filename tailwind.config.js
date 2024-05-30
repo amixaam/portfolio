@@ -37,6 +37,9 @@ export default {
             transitionTimingFunction: {
                 snappy: "cubic-bezier(0.16, 1, 0.3, 1)",
             },
+            screens: {
+                "3xl": "1750px",
+            },
         },
     },
     plugins: [],

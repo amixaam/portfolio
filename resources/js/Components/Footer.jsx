@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../../public/icons/Icon";
+import Icon from "../../../public/images/icons/Icon";
 import { CalcYo } from "../Utils/CalcYo";
 
 function Footer() {
