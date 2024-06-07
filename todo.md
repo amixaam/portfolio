@@ -10,10 +10,11 @@
 -   [ ] Redesign Landing
 -   [ ] Redesign Contacts
 -   [ ] transition out animations for pages
+-   [x] Add favicon and metadata
 
 ## Bugs, tweaks
 
--   [ ] Redo photo gallery promo photos (update URL + once the product is complete)
+-   [ ] Redo photo-gallery promo photos (update URL + once the product is complete)
 -   [ ] Redo Flora promo photos (once the product is complete)
 -   [ ] Redesign for optimal responsiveness (especially landing and about sections)
 -   [ ] Better system for icons

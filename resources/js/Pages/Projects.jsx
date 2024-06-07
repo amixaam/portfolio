@@ -13,15 +13,16 @@ const testData = [
             <>
                 <p>
                     Flora is an opinionated, design-first local music player
-                    built with <a href="">React Native</a>. It combines the best
-                    features from various music apps to create the perfect UI
-                    and UX tailored to my preferences.
+                    built with <p className="highlight">React Native</p>. It
+                    combines the best features from various music apps to create
+                    the perfect UI and UX tailored to my preferences.
                 </p>
                 <p>
-                    Key Technologies that are used are <a href="">Zustand</a>,{" "}
-                    <a href="">React Native Track Player</a>,{" "}
-                    <a href="">React Native Reanimated</a> and{" "}
-                    <a href="">React router</a>.
+                    Key Technologies that are used are{" "}
+                    <p className="highlight">Zustand</p>,{" "}
+                    <p className="highlight">React Native Track Player</p>,{" "}
+                    <p className="highlight">React Native Reanimated</p> and{" "}
+                    <p className="highlight">React router</p>.
                 </p>
                 <p>
                     My goal was to craft an exceptional user experience by
@@ -66,9 +67,11 @@ const testData = [
                     were top-notch.
                 </p>
                 <p>
-                    Key technologies used are <a href="">Laravel</a>,{" "}
-                    <a href="">Alpinejs</a>, <a href="">Sass</a> and{" "}
-                    <a href="">Livewire</a>.
+                    Key technologies used are{" "}
+                    <p className="highlight">Laravel</p>,{" "}
+                    <p className="highlight">Alpinejs</p>,{" "}
+                    <p className="highlight">Sass</p> and{" "}
+                    <p className="highlight">Livewire</p>.
                 </p>
                 <p>
                     Collaboratively created with a focus on elegant design and
@@ -86,29 +89,12 @@ const testData = [
                 name: "Figma design",
             },
         ],
-        images: ["images/photo-gallery-promo/promo-3"],
-    },
-    {
-        name: "ERASMUS + Lithuania youth exchange",
-        year: "2023",
-        technologies: [],
-        content: (
-            <p>
-                Made with Inertia js, and with it’s unique design, it’s a wonder
-                to explore the project all the time.
-            </p>
-        ),
-        links: [
-            {
-                link: "https://github.com/amixaam/flora-remake",
-                name: "GitHub repo",
-            },
-            {
-                link: "",
-                name: "Figma design",
-            },
+        images: [
+            "images/ruckas-muiza-promo/promo-1",
+            "images/ruckas-muiza-promo/promo-2",
+            "images/ruckas-muiza-promo/promo-3",
+            "images/ruckas-muiza-promo/promo-4",
         ],
-        images: ["images/photo-gallery-promo/promo-3"],
     },
     {
         name: "photo-gallery",
@@ -129,20 +115,22 @@ const testData = [
                     robust admin tools.
                 </p>
                 <p>
-                    Key technologies used are <a href="">Laravel</a>,{" "}
-                    <a href="">React</a>, <a href="">Inertiajs</a> and{" "}
-                    <a href="">Tailwind</a>.
+                    Key technologies used are{" "}
+                    <p className="highlight">Laravel</p>,{" "}
+                    <p className="highlight">React</p>,{" "}
+                    <p className="highlight">Inertiajs</p> and{" "}
+                    <p className="highlight">Tailwind</p>.
                 </p>
                 <p>Explore and enjoy the beautifully crafted interface.</p>
             </>
         ),
         links: [
             {
-                link: "https://amixam.id.lv",
+                link: "https://photos.amixam.id.lv",
                 name: "Website",
             },
             {
-                link: "https://github.com/amixaam/flora-remake",
+                link: "https://github.com/amixaam/photo-gallery",
                 name: "GitHub repo",
             },
             {
@@ -157,6 +145,18 @@ const testData = [
         ],
     },
     {
+        name: "Kuriyama bot",
+        year: "2024",
+        technologies: [],
+        content: (
+            <>
+                <p>wazzuh</p>
+            </>
+        ),
+        links: [],
+        images: [],
+    },
+    {
         name: "Typomancer",
         year: "2024",
         technologies: ["unity", "laravel", "stripe", "csharp", "php"],
@@ -168,8 +168,9 @@ const testData = [
                     leaderboards, and Stripe integration.
                 </p>
                 <p>
-                    Key technologies used are <a href="">Unity</a>,{" "}
-                    <a href="">Laravel</a> and <a href="">Stripe</a>.
+                    Key technologies used are <p className="highlight">Unity</p>
+                    , <p className="highlight">Laravel</p> and{" "}
+                    <p className="highlight">Stripe</p>.
                 </p>
                 <p>Enjoy seamless gameplay with robust backend support.</p>
             </>
@@ -180,21 +181,37 @@ const testData = [
                 name: "GitHub repo",
             },
         ],
-        images: ["images/photo-gallery-promo/promo-3"],
+        images: [
+            "images/typomancer-promo/promo-1",
+            "images/typomancer-promo/promo-2",
+        ],
     },
     {
         name: "CENE",
         year: "2024",
-        technologies: ["laravel"],
+        technologies: ["laravel", "react", "stripe", "php", "javascript"],
         content: (
-            <p>
-                Made with Inertia js, and with it’s unique design, it’s a wonder
-                to explore the project all the time.
-            </p>
+            <>
+                <p>
+                    CENE is a ticket-selling platform for theatrical and cinema
+                    releases. Users can view new and upcoming events, select
+                    seats, leave reviews, and download PDFs of their ticket QR
+                    codes.
+                </p>
+                <p>
+                    Key technologies used are <p className="highlight">React</p>
+                    , <p className="highlight">Laravel</p> and{" "}
+                    <p className="highlight">Stripe</p>.
+                </p>
+                <p>
+                    Experience a seamless way to purchase and manage event
+                    tickets.
+                </p>
+            </>
         ),
         links: [
             {
-                link: "https://github.com/amixaam/flora-remake",
+                link: "https://github.com/amixaam/cene",
                 name: "GitHub repo",
             },
             {
@@ -202,7 +219,12 @@ const testData = [
                 name: "Figma design",
             },
         ],
-        images: ["images/photo-gallery-promo/promo-3"],
+        images: [
+            "images/cene-promo/promo-1",
+            "images/cene-promo/promo-2",
+            "images/cene-promo/promo-3",
+            "images/cene-promo/promo-4",
+        ],
     },
 ];
 

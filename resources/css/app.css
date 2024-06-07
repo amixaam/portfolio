@@ -51,10 +51,10 @@ html {
     }
 
     .blog-styles {
-        a {
-            @apply text-link-light hover:underline dark:text-link-dark;
+        @apply space-y-6;
+        .highlight {
+            @apply inline text-link-light dark:text-link-dark;
         }
-
         p {
             @apply text-balance;
         }
@@ -103,7 +103,8 @@ h1 {
     letter-spacing: -3%;
 }
 
-h2,h3 {
+h2,
+h3 {
     @apply text-5xl font-bold text-text-light dark:text-text-dark;
     font-family: "Archivo", sans-serif;
     line-height: 74px;
