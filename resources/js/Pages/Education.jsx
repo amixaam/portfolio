@@ -91,9 +91,18 @@ const EducationItem = ({
 
     return (
         <div className="scroll-mt-16 space-y-2" id={name}>
+            <div className="lg:hidden">
+                <MobileButton
+                    open={open}
+                    toggleOpen={toggleOpen}
+                    name={name}
+                    year={year}
+                />
+            </div>
+
             <button
                 onMouseDown={toggleOpen}
-                className="flex w-full flex-row items-center justify-between"
+                className="hidden lg:flex w-full flex-row items-center justify-between "
                 // keyboard support
                 onKeyDown={(event) => {
                     if (event.key === "Enter") {
@@ -103,8 +112,8 @@ const EducationItem = ({
                 }}
                 tabIndex={0}
             >
-                <div className="flex flex-row items-center gap-8">
-                    <p className="w-[5ch] text-start leading-none opacity-70">
+                <div className="flex  items-center gap-8 lg:flex-row">
+                    <p className="text-start leading-none opacity-70 lg:w-[5ch]">
                         {year}
                     </p>
                     <h2 className="text-start md:text-3xl xl:text-5xl">
@@ -118,12 +127,39 @@ const EducationItem = ({
             </button>
             {open && (
                 <div className="overflow-hidden">
-                    <div className="clip-f-t grid grid-cols-2 gap-8">
+                    <div className="clip-f-t gap-8">
                         <div className="blog-styles w-full">{content}</div>
                     </div>
                 </div>
             )}
         </div>
+    );
+};
+
+const MobileButton = ({ toggleOpen, open, name, year }) => {
+    return (
+        <button
+            onMouseDown={toggleOpen}
+            className="flex w-full flex-col items-center justify-between"
+            // keyboard support
+            onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    toggleOpen();
+                }
+            }}
+            tabIndex={0}
+        >
+            <div className="flex w-full flex-row items-center justify-between ">
+                <p className="text-start leading-none opacity-70">{year}</p>
+                <Icon
+                    icon={open ? "chevron-up" : "chevron-down"}
+                    stroke="transparent"
+                    className="scale-50"
+                />
+            </div>
+            <h2 className="w-full text-start">{name}</h2>
+        </button>
     );
 };
 
