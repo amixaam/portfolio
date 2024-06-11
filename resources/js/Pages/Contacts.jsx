@@ -1,15 +1,14 @@
 import React from "react";
-import ScreenLayout from "../Layouts/ScreenLayout";
 import Icon from "../../../public/images/icons/Icon";
+import MainLayout from "../Layouts/MainLayout";
 
 function Contacts() {
     return (
-        <ScreenLayout
+        <MainLayout
             title={"Contacts"}
             footer={<SpecialFooter />}
-            forceScreen={true}
         >
-            <div className="float-vertical relative -space-y-4 md:-space-y-1">
+            <div className="float-vertical flex flex-col justify-center w-full relative -space-y-4 md:-space-y-1">
                 {[...Array(7)].map((_, i) => (
                     <h3
                         key={i}
@@ -22,7 +21,7 @@ function Contacts() {
                     </h3>
                 ))}
             </div>
-        </ScreenLayout>
+        </MainLayout>
     );
 }
 
@@ -64,7 +63,7 @@ const SpecialFooter = () => {
                             icon={icon.icon}
                             size={80}
                             minimise={true}
-                            className="transition-all hover:scale-90 hover:rounded-none hover:bg-secondary-dark hover:fill-text-dark lg:hover:p-4 dark:hover:bg-secondary-light  dark:hover:fill-text-light"
+                            className="transition-all hover:scale-90 hover:bg-secondary-dark hover:fill-text-dark lg:hover:p-4 dark:hover:bg-secondary-light  dark:hover:fill-text-light"
                         />
                     </a>
                 ))}

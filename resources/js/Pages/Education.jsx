@@ -55,15 +55,17 @@ function Education() {
 
     return (
         <MainLayout title="Education">
-            {educationData.map((education, key) => (
-                <EducationItem
-                    key={key}
-                    education={education}
-                    open={key === openEducation}
-                    closeEducation={() => setOpenEducation(null)}
-                    openEducation={() => setOpenEducation(key)}
-                />
-            ))}
+            <div className="flex w-full flex-col gap-16 md:gap-32">
+                {educationData.map((education, key) => (
+                    <EducationItem
+                        key={key}
+                        education={education}
+                        open={key === openEducation}
+                        closeEducation={() => setOpenEducation(null)}
+                        openEducation={() => setOpenEducation(key)}
+                    />
+                ))}
+            </div>
         </MainLayout>
     );
 }
@@ -117,9 +119,7 @@ const EducationItem = ({
             {open && (
                 <div className="overflow-hidden">
                     <div className="clip-f-t grid grid-cols-2 gap-8">
-                        <div className="blog-styles w-full">
-                            {content}
-                        </div>
+                        <div className="blog-styles w-full">{content}</div>
                     </div>
                 </div>
             )}

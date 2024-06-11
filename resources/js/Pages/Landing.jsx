@@ -1,16 +1,16 @@
 import React from "react";
 import Icon from "../../../public/images/icons/Icon";
 import { BoxLink } from "../Components/BoxLink";
-import ScreenLayout from "../Layouts/ScreenLayout";
+import MainLayout from "../Layouts/MainLayout";
 
 function Landing() {
     return (
-        <ScreenLayout forceScreen={true}>
+        <MainLayout>
             <main className="grid flex-1 lg:grid-cols-2">
                 <div className="clip-f-b flex flex-col justify-center gap-4">
-                    <h2 className="">Table of contents</h2>
+                    <h2 className="hidden md:block">Table of contents</h2>
 
-                    <ul className=" ml-16 flex flex-col gap-4">
+                    <ul className="ml-4 flex flex-col gap-4 md:ml-16 md:gap-6">
                         <BoxLink icon={"person"} href={route("About")}>
                             About me
                         </BoxLink>
@@ -26,20 +26,18 @@ function Landing() {
                     </ul>
                 </div>
             </main>
-            <div className="relative hidden xl:block">
-                <div className="clip-f-b group absolute -top-[27rem] right-0 aspect-portrait w-[30%] transition-all duration-300 2xl:-top-[34rem] 2xl:w-[40%]">
-                    <div className="group-hover:card-enter card absolute flex w-full items-center justify-end gap-2 rounded-t-50 bg-bg-light-50 px-14 py-8 transition-all  dark:bg-bg-dark-50">
-                        <Icon icon="location" stroke="transparent" size={32} />
-                        <p>Prague, Czech Republic</p>
-                    </div>
-                    <img
-                        src="/images/me.webp"
-                        alt="Me posing in Prague, Czech Republic"
-                        className=" h-full w-full rounded-50 object-cover 2xl:rounded-b-none"
-                    />
+            <div className="clip-f-b group absolute right-0 top-0 hidden aspect-portrait h-[80%] lg:block">
+                <div className="group-hover:card-enter card absolute flex w-full items-center justify-end gap-2 rounded-t-50 bg-bg-light-50 px-14 py-8 transition-all  dark:bg-bg-dark-50">
+                    <Icon icon="location" stroke="transparent" size={32} />
+                    <p>Prague, Czech Republic</p>
                 </div>
+                <img
+                    src="/images/me.webp"
+                    alt="Me posing in Prague, Czech Republic"
+                    className=" h-full w-full rounded-50 object-cover"
+                />
             </div>
-        </ScreenLayout>
+        </MainLayout>
     );
 }
 

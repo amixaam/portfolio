@@ -232,7 +232,7 @@ function Projects() {
     const [openProject, setOpenProject] = useState(null);
     return (
         <MainLayout title={"Projects"}>
-            <div className="flex flex-col gap-16 md:gap-32">
+            <div className="flex flex-col gap-16 md:gap-32 w-full">
                 {testData.map((project, key) => (
                     <ProjectItem
                         key={key}
@@ -276,7 +276,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                 }}
                 tabIndex={0}
             >
-                <div className="flex flex-row items-center gap-8">
+                <div className="flex flex-row items-center gap-4 md:gap-8">
                     <p className="w-[5ch] text-start leading-none opacity-70">
                         {year}
                     </p>
@@ -285,6 +285,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                 <Icon
                     icon={open ? "chevron-up" : "chevron-down"}
                     stroke="transparent"
+                    className="scale-50 md:scale-100"
                 />
             </button>
 
@@ -301,7 +302,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                                         key={key}
                                         src={`images/icons/${tech}.svg`}
                                         alt={`${tech} logo`}
-                                        className="rounded-icon"
+                                        className="size-8 rounded-sm md:size-12 md:rounded-icon"
                                     />
                                 ))}
                             </div>

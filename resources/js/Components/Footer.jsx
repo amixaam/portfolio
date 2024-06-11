@@ -11,7 +11,7 @@ function Footer() {
                 {year}yo Software engineer • designer
             </p>
             <div className="overflow-clip">
-                <div className="carousel-t-l flex flex-shrink-0 flex-row flex-nowrap gap-8">
+                <div className="carousel-t-l hidden flex-shrink-0 flex-row flex-nowrap gap-8 md:flex">
                     {Array.from({ length: 26 }, (_, i) => (
                         <Icon
                             key={i}

@@ -14,6 +14,7 @@
 
 ## Bugs, tweaks
 
+-   [ ] Better layouts
 -   [ ] Redo photo-gallery promo photos (update URL + once the product is complete)
 -   [ ] Redo Flora promo photos (once the product is complete)
 -   [ ] Redesign for optimal responsiveness (especially landing and about sections)

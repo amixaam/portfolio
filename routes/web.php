@@ -23,3 +23,4 @@ Route::get('/contacts', function () {
 Route::get('/education', function () {
     return Inertia::render('Education');
 })->name('Education');
+

@@ -13,7 +13,7 @@ function Navbar({ title = "Roberts brinkis" }) {
                 </h1>
 
                 <div className="overflow-clip">
-                    <div className="carousel-t-r flex flex-shrink-0 flex-row flex-nowrap gap-8">
+                    <div className="carousel-t-r hidden flex-shrink-0 flex-row flex-nowrap gap-8 md:flex">
                         {Array.from({ length: 20 }, (_, i) => (
                             <Icon
                                 key={i}

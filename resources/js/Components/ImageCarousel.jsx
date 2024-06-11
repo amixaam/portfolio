@@ -69,7 +69,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
         <>
             <div className="absolute bottom-0 top-0 flex h-full w-full items-center">
                 <button
-                    className="3xl:-left-8 absolute left-2 h-fit transition-all hover:scale-95 active:-left-9 active:scale-90"
+                    className="absolute left-2 h-fit transition-all hover:scale-95 active:left-0 active:scale-90 3xl:-left-8 3xl:active:-left-9"
                     onMouseDown={() => movePos(-1)}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -86,7 +86,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                     />
                 </button>
                 <button
-                    className="3xl:-right-8 absolute right-2 h-fit transition-all hover:scale-95 active:-right-9 active:scale-90"
+                    className="absolute right-2 h-fit transition-all hover:scale-95 active:right-0 active:scale-90 3xl:-right-8 3xl:active:-right-9"
                     onMouseDown={() => movePos(1)}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
