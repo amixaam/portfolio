@@ -1,14 +1,19 @@
 import React from "react";
 import Icon from "../../../public/images/icons/Icon";
 
-function Navbar({ title = "Roberts brinkis" }) {
+function Navbar({ title = "Roberts brinkis", toggleMenu }) {
     return (
         <nav className="clip-f-b flex flex-col gap-4">
             <div className="hidden bg-secondary-light dark:bg-secondary-dark"></div>
             <div className="hidden fill-text-light dark:fill-text-dark"></div>
-            <div className="hidden"></div>
             <div className="flex flex-row items-center gap-8">
-                <h1 className="testing text-nowrap uppercase md:text-wrap lg:text-nowrap">
+                <button onMouseDown={toggleMenu}>
+                    <Icon
+                        className="rounded-icon p-2 transition-all hover:-mt-2"
+                        icon="menu"
+                    />
+                </button>
+                <h1 className="text-nowrap uppercase md:text-wrap lg:text-nowrap">
                     {title}
                 </h1>
 

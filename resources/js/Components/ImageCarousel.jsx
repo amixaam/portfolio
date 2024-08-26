@@ -3,6 +3,7 @@ import Icon from "../../../public/images/icons/Icon";
 
 export const ImageCarousel = ({ images = [] }) => {
     const [selectedImage, setSelectedImage] = useState(0);
+    console.log(images);
 
     useEffect(() => {
         const listener = (event) => {
@@ -19,7 +20,7 @@ export const ImageCarousel = ({ images = [] }) => {
     }, []);
 
     return (
-        <div className="relative aspect-square lg:w-[800px]">
+        <div className="relative aspect-square  lg:h-full">
             <div className="relative aspect-square overflow-hidden rounded-50">
                 <div
                     className="flex flex-shrink-0  flex-grow-0 flex-row transition-transform duration-300 ease-snappy"
@@ -34,8 +35,8 @@ export const ImageCarousel = ({ images = [] }) => {
                                 window.matchMedia(
                                     "(prefers-color-scheme: dark)",
                                 ).matches
-                                    ? `${image}-dark.png`
-                                    : `${image}.png`
+                                    ? `${image.path}-dark.png`
+                                    : `${image.path}.png`
                             }
                             alt=""
                             className="clip-f-t"

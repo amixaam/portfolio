@@ -128,6 +128,7 @@ const testData = [
             {
                 link: "https://photos.amixam.id.lv",
                 name: "Website",
+                type: "demo",
             },
             {
                 link: "https://github.com/amixaam/photo-gallery",
@@ -228,16 +229,19 @@ const testData = [
     },
 ];
 
-function Projects() {
+function Projects({ projects }) {
     const [openProject, setOpenProject] = useState(null);
+    console.log(projects[0]);
+
     return (
         <MainLayout title={"Projects"}>
-            <div className="flex flex-col gap-16 md:gap-32 w-full">
-                {testData.map((project, key) => (
+            <div className="flex w-full flex-col gap-16 md:gap-32">
+                {projects.map((project, key) => (
                     <ProjectItem
                         key={key}
                         project={project}
                         open={key === openProject}
+                        hasDemo={project.hasDemo}
                         closeProject={() => setOpenProject(null)}
                         openProject={() => setOpenProject(key)}
                     />
@@ -247,8 +251,23 @@ function Projects() {
     );
 }
 
-const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
-    const { name, year, technologies, content, links, images } = project;
+const LiveDemoTag = () => {
+    return (
+        <div className="flex rounded-full border-2 border-link-light bg-bg-light px-5 py-2 dark:border-link-light dark:bg-secondary-dark">
+            <p className="text-md font-semibold leading-none">Live demo</p>
+        </div>
+    );
+};
+
+const ProjectItem = ({
+    project,
+    open = false,
+    hasDemo = false,
+    closeProject,
+    openProject,
+}) => {
+    const { name, year, technologies, content, project_links, images } =
+        project;
 
     const toggleOpen = () => {
         if (open) {
@@ -262,7 +281,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
     };
 
     return (
-        <div className="scroll-mt-16 space-y-2" id={project.name}>
+        <div className="scroll-mt-32 space-y-2" id={project.name}>
             {/* top bar */}
             <button
                 onMouseDown={toggleOpen}
@@ -281,6 +300,7 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                         {year}
                     </p>
                     <h2 className="text-start">{name}</h2>
+                    {hasDemo && <LiveDemoTag />}
                 </div>
                 <Icon
                     icon={open ? "chevron-up" : "chevron-down"}
@@ -288,8 +308,6 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                     className="scale-50 md:scale-100"
                 />
             </button>
-
-            {/* content */}
 
             {open && (
                 <div className="overflow-hidden">
@@ -300,36 +318,40 @@ const ProjectItem = ({ project, open = false, closeProject, openProject }) => {
                                 {technologies.map((tech, key) => (
                                     <img
                                         key={key}
-                                        src={`images/icons/${tech}.svg`}
-                                        alt={`${tech} logo`}
+                                        src={tech.url}
+                                        alt={tech.name}
                                         className="size-8 rounded-sm md:size-12 md:rounded-icon"
                                     />
                                 ))}
                             </div>
 
-                            {/* text */}
-                            <div className="blog-styles max-w-[600px]">
-                                {content}
-                            </div>
+                            {/* content */}
+                            <div
+                                className="blog-styles max-w-[600px]"
+                                dangerouslySetInnerHTML={{
+                                    __html: project.content,
+                                }}
+                            ></div>
 
                             {/* links */}
                             <div className="space-y-4">
-                                {links.map((url, key) => (
+                                {project_links.map((link, key) => (
                                     <BoxLink
                                         icon="link"
-                                        href={url.link}
+                                        href={link.redirect}
                                         size={48}
                                         key={key}
                                         outside={true}
                                     >
-                                        {url.name}
+                                        {link.title}{" "}
+                                        {link.type === "demo" ? "(live)" : ""}
                                     </BoxLink>
                                 ))}
                             </div>
                         </div>
 
                         {/* image */}
-                        <div className="order-1 flex h-fit items-start lg:order-2">
+                        <div className="order-1 flex h-2/3 w-full justify-end px-8 lg:order-2">
                             <ImageCarousel images={images} />
                         </div>
                     </div>
