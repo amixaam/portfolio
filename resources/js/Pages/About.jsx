@@ -31,7 +31,7 @@ function About() {
                                 <Icon
                                     icon="wave"
                                     stroke="transparent"
-                                    fill="fill-link-light dark:fill-link-dark"
+                                    fill="fill-text-light dark:fill-text-dark"
                                     className="hand-wave"
                                     minimise={true}
                                 />
