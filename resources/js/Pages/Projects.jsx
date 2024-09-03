@@ -253,9 +253,19 @@ function Projects({ projects }) {
 
 const LiveDemoTag = () => {
     return (
-        <div className="flex rounded-full border-2 border-link-light bg-bg-light px-5 py-2 dark:border-link-light dark:bg-secondary-dark">
+        <div className="hidden rounded-full  border-2 border-link-light bg-bg-light px-5 py-2 md:flex dark:border-link-light dark:bg-secondary-dark">
             <p className="text-md font-semibold leading-none">Live demo</p>
         </div>
+    );
+};
+
+const TechnologyIcon = ({ technology }) => {
+    return (
+        <img
+            src={technology.url}
+            alt={technology.name}
+            className="size-8 rounded-sm md:size-12 md:rounded-icon"
+        />
     );
 };
 
@@ -316,18 +326,16 @@ const ProjectItem = ({
                             {/* technologies */}
                             <div className="flex flex-row gap-4">
                                 {technologies.map((tech, key) => (
-                                    <img
+                                    <TechnologyIcon
+                                        technology={tech}
                                         key={key}
-                                        src={tech.url}
-                                        alt={tech.name}
-                                        className="size-8 rounded-sm md:size-12 md:rounded-icon"
                                     />
                                 ))}
                             </div>
 
                             {/* content */}
                             <div
-                                className="blog-styles max-w-[600px]"
+                                className="blog-styles"
                                 dangerouslySetInnerHTML={{
                                     __html: project.content,
                                 }}
@@ -343,8 +351,7 @@ const ProjectItem = ({
                                         key={key}
                                         outside={true}
                                     >
-                                        {link.title}{" "}
-                                        {link.type === "demo" ? "(live)" : ""}
+                                        {link.title}
                                     </BoxLink>
                                 ))}
                             </div>

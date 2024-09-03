@@ -70,7 +70,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
         <>
             <div className="absolute bottom-0 top-0 flex h-full w-full items-center">
                 <button
-                    className="absolute left-2 h-fit transition-all hover:scale-95 active:left-0 active:scale-90 3xl:-left-8 3xl:active:-left-9"
+                    className="absolute left-2 h-fit transition-all hover:scale-95 active:left-0 active:scale-90 3xl:-left-6 3xl:active:-left-7"
                     onMouseDown={() => movePos(-1)}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -81,13 +81,13 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                 >
                     <Icon
                         icon="arrow-left"
-                        size={64}
+                        size={48}
                         className="rounded-icon"
                         minimise={true}
                     />
                 </button>
                 <button
-                    className="absolute right-2 h-fit transition-all hover:scale-95 active:right-0 active:scale-90 3xl:-right-8 3xl:active:-right-9"
+                    className="absolute right-2 h-fit transition-all hover:scale-95 active:right-0 active:scale-90 3xl:-right-6 3xl:active:-right-7"
                     onMouseDown={() => movePos(1)}
                     onKeyDown={(event) => {
                         if (event.key === "Enter") {
@@ -98,14 +98,14 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                 >
                     <Icon
                         icon="arrow-right"
-                        size={64}
+                        size={48}
                         className="rounded-icon"
                         minimise={true}
                     />
                 </button>
             </div>
-            <div className="absolute bottom-4 flex w-full justify-center">
-                <div className="flex gap-4 rounded-full bg-secondary-light px-6 py-2 dark:bg-secondary-dark">
+            <div className="absolute bottom-2 flex w-full justify-center">
+                <div className="flex gap-2 rounded-full bg-secondary-light px-3 py-3 dark:bg-secondary-dark">
                     {images.map((image, i) => (
                         <button
                             key={i}
@@ -116,10 +116,10 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                                     changePos(i);
                                 }
                             }}
-                            className="group -my-3 lg:-my-4"
+                            className="group -my-8 lg:-my-8"
                         >
                             <h3
-                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"}  text-4xl transition-all group-hover:scale-90 group-hover:brightness-200 group-active:scale-75 lg:text-6xl`}
+                                className={`${i === selectedImage ? "text-text-light dark:text-text-dark" : "text-bg-dark-50 dark:text-bg-light-50"} transition-all group-hover:scale-90 group-hover:brightness-200 group-active:scale-75`}
                             >
                                 •
                             </h3>
