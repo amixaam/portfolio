@@ -16,6 +16,9 @@ function Menu({ open = false, toggleMenu }) {
 
             <div className="flex h-full flex-col justify-center">
                 <ul className="ml-12 flex flex-col gap-6 md:ml-16">
+                    <BoxLink icon={"menu"} href={route("Landing")} size={48}>
+                        Home
+                    </BoxLink>
                     <BoxLink icon={"person"} href={route("About")} size={48}>
                         About me
                     </BoxLink>

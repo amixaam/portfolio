@@ -13,8 +13,8 @@ export const BoxLink = ({
         return (
             <a
                 href={href}
-                className="group flex h-fit w-fit flex-row items-center gap-8 
-                        transition-all hover:ml-4 focus:ml-4 active:ml-8"
+                className="group flex h-fit w-full flex-row items-center gap-8 
+                        transition-all hover:ml-4 focus:ml-4 active:ml-8 md:w-fit"
             >
                 <Icon className="rounded-icon p-2" icon={icon} size={size} />
                 <p>{children}</p>

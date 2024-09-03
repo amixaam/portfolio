@@ -13,18 +13,15 @@ function Navbar({ title = "Roberts brinkis", toggleMenu }) {
                         icon="menu"
                     />
                 </button>
-                <h1 className="text-nowrap uppercase md:text-wrap lg:text-nowrap">
-                    {title}
-                </h1>
+                <h1 className="text-clamp text-nowrap uppercase">{title}</h1>
 
                 <div className="overflow-clip">
-                    <div className="carousel-t-r hidden flex-shrink-0 flex-row flex-nowrap gap-8 md:flex">
+                    <div className="carousel-t-r flex flex-shrink-0 flex-row flex-nowrap gap-8">
                         {Array.from({ length: 20 }, (_, i) => (
                             <Icon
                                 key={i}
-                                size={96}
-                                minimise={true}
                                 icon="arrow-right"
+                                className="size-10 sm:size-14 md:size-16 lg:size-[94px]"
                             />
                         ))}
                     </div>

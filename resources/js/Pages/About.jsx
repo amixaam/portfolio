@@ -25,15 +25,14 @@ function About() {
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 md:gap-8">
-                        <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-8">
-                            <h2 className="flex flex-row items-center gap-2 sm:gap-4 md:gap-8">
+                        <div className="flex flex-row items-center gap-4 md:gap-8">
+                            <h2 className="flex flex-row items-center gap-4 md:gap-8">
                                 Hey! I'm Roberts{" "}
                                 <Icon
                                     icon="wave"
                                     stroke="transparent"
                                     fill="fill-text-light dark:fill-text-dark"
-                                    className="hand-wave"
-                                    minimise={true}
+                                    className="hand-wave size-8 md:size-14"
                                 />
                             </h2>
                         </div>

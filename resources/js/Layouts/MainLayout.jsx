@@ -13,7 +13,7 @@ function MainLayout({ children, title, footer }) {
     return (
         <>
             <Menu open={menuOpen} toggleMenu={ToggleMenu} />
-            <div className="clip-f-b bg-pattern flex min-h-screen flex-col gap-8 overflow-clip bg-bg-light p-small-app md:p-default-app dark:bg-bg-dark">
+            <div className="clip-f-b bg-pattern flex min-h-[100svh] flex-col gap-8 overflow-clip bg-bg-light p-small-app md:p-default-app dark:bg-bg-dark">
                 <div className="overflow-x-clip">
                     <Navbar title={title} toggleMenu={ToggleMenu} />
                 </div>

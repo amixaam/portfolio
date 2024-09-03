@@ -322,7 +322,7 @@ const ProjectItem = ({
             {open && (
                 <div className="overflow-hidden">
                     <div className="clip-f-t row-auto grid gap-8 lg:grid-cols-2 lg:grid-rows-1 lg:gap-24">
-                        <div className="order-2 space-y-8 lg:order-1">
+                        <div className="order-2 space-y-4 md:space-y-8 lg:order-1">
                             {/* technologies */}
                             <div className="flex flex-row gap-4">
                                 {technologies.map((tech, key) => (
@@ -358,8 +358,10 @@ const ProjectItem = ({
                         </div>
 
                         {/* image */}
-                        <div className="order-1 flex h-2/3 w-full justify-end px-8 lg:order-2">
-                            <ImageCarousel images={images} />
+                        <div className="order-1 flex w-full justify-end md:p-8 lg:order-2">
+                            <div className="flex aspect-square w-full max-w-[40rem]">
+                                <ImageCarousel images={images} />
+                            </div>
                         </div>
                     </div>
                 </div>

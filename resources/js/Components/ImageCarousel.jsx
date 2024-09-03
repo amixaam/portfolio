@@ -20,10 +20,10 @@ export const ImageCarousel = ({ images = [] }) => {
     }, []);
 
     return (
-        <div className="relative aspect-square  lg:h-full">
-            <div className="relative aspect-square overflow-hidden rounded-50">
+        <div className="relative h-full w-full">
+            <div className="relative overflow-hidden rounded-50">
                 <div
-                    className="flex flex-shrink-0  flex-grow-0 flex-row transition-transform duration-300 ease-snappy"
+                    className="flex flex-shrink-0 flex-grow-0 flex-row transition-transform duration-300 ease-snappy"
                     style={{
                         transform: `translateX(-${selectedImage * 100}%)`,
                     }}
@@ -81,9 +81,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                 >
                     <Icon
                         icon="arrow-left"
-                        size={48}
-                        className="rounded-icon"
-                        minimise={true}
+                        className="md:size-18 size-12 rounded-icon"
                     />
                 </button>
                 <button
@@ -98,8 +96,7 @@ const CarouselUI = ({ images, selectedImage, setSelectedImage }) => {
                 >
                     <Icon
                         icon="arrow-right"
-                        size={48}
-                        className="rounded-icon"
+                        className="md:size-18 size-12 rounded-icon"
                         minimise={true}
                     />
                 </button>

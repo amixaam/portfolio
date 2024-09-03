@@ -11,14 +11,13 @@ function Footer() {
                 {year}yo Software engineer • designer
             </p>
             <div className="overflow-clip">
-                <div className="carousel-t-l hidden flex-shrink-0 flex-row flex-nowrap gap-8 md:flex">
+                <div className="carousel-t-l flex flex-shrink-0 flex-row flex-nowrap gap-8">
                     {Array.from({ length: 26 }, (_, i) => (
                         <Icon
                             key={i}
-                            size={64}
-                            minimise={true}
                             // className="clip-f-r"
                             icon="arrow-left"
+                            className="size-10 sm:size-14 md:size-[64px]"
                         />
                     ))}
                 </div>
