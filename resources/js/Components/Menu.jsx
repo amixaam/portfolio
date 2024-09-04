@@ -5,7 +5,7 @@ import { BoxLink } from "./BoxLink";
 function Menu({ open = false, toggleMenu }) {
     return (
         <div
-            className={`${open && "menu-enter"} menu fixed left-0 top-0 z-50 h-screen w-full bg-bg-dark transition-all`}
+            className={`${open && "menu-enter"} menu fixed left-0 top-0 z-50 h-screen w-full bg-bg-light transition-all dark:bg-bg-dark`}
         >
             <button className="absolute p-4" onMouseDown={toggleMenu}>
                 <Icon

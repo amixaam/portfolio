@@ -4,11 +4,8 @@ import MainLayout from "../Layouts/MainLayout";
 
 function Contacts() {
     return (
-        <MainLayout
-            title={"Contacts"}
-            footer={<SpecialFooter />}
-        >
-            <div className="float-vertical flex flex-col justify-center w-full relative -space-y-4 md:-space-y-1">
+        <MainLayout title={"Contacts"} footer={<SpecialFooter />}>
+            <div className="float-vertical relative flex w-full flex-col justify-center -space-y-4 md:-space-y-1">
                 {[...Array(7)].map((_, i) => (
                     <h3
                         key={i}
@@ -41,6 +38,10 @@ const links = [
     {
         icon: "linkedin",
         url: "https://www.linkedin.com/in/robertsbrinkis/",
+    },
+    {
+        icon: "cv",
+        url: "https://seafile.amixam.id.lv/f/f580a0cde02c419aa4e0/",
     },
 ];
 
