@@ -24,24 +24,24 @@ function Contacts() {
 
 const links = [
     {
-        icon: "instagram",
-        url: "https://instagram.com/robisnis",
+        icon: "cv",
+        url: "https://seafile.amixam.id.lv/f/70c2ea4802f14a2da8c6/",
     },
     {
         icon: "mail",
         url: "mailto:robertobrinko@gmail.com",
     },
     {
-        icon: "github",
-        url: "https://github.com/amixaam",
-    },
-    {
         icon: "linkedin",
         url: "https://www.linkedin.com/in/robertsbrinkis/",
     },
     {
-        icon: "cv",
-        url: "https://seafile.amixam.id.lv/f/f580a0cde02c419aa4e0/",
+        icon: "github",
+        url: "https://github.com/amixaam",
+    },
+    {
+        icon: "instagram",
+        url: "https://instagram.com/robisnis",
     },
 ];
 
