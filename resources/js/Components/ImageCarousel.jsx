@@ -35,8 +35,8 @@ export const ImageCarousel = ({ images = [] }) => {
                                 window.matchMedia(
                                     "(prefers-color-scheme: dark)",
                                 ).matches
-                                    ? `${image.path}-dark.png`
-                                    : `${image.path}.png`
+                                    ? `${image.path}-dark.webp`
+                                    : `${image.path}.webp`
                             }
                             alt=""
                             className="clip-f-t"
