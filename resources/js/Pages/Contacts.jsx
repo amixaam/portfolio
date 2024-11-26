@@ -25,7 +25,7 @@ function Contacts() {
 const links = [
     {
         icon: "cv",
-        url: "https://seafile.amixam.id.lv/f/70c2ea4802f14a2da8c6/",
+        url: "https://seafile.amixam.net/f/dfbe58b86010476d9bb1/",
     },
     {
         icon: "mail",
