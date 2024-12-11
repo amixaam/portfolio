@@ -1,0 +1,27 @@
+---
+import { getYearOld } from "@utils/getYearOld";
+import ArrowLeft from "@icons/arrow-left.svg";
+
+const iconCount = 26;
+const icons = Array.from({ length: iconCount });
+
+const yo = getYearOld();
+---
+
+<nav class="clip-f-b overflow-clip">
+	<div class="flex flex-row space-x-8 items-center">
+		<h4 class="text-nowrap">{yo}yo Software engineer • designer</h4>
+
+		<div class="items-center flex flex-row overflow-clip">
+			<div class="carousel-t-l flex gap-6">
+				{icons.map((_, i) => <ArrowLeft class="arrow" />)}
+			</div>
+		</div>
+	</div>
+</nav>
+
+<style>
+	.arrow {
+		@apply bg-secondary-light fill-text-light dark:bg-secondary-dark dark:fill-text-dark size-12;
+	}
+</style>

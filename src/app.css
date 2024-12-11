@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Ramabhadra&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	@apply bg-bg-light dark:bg-bg-dark;
+}
+
+body {
+	@apply space-y-8 mx-default-app py-small-app min-h-svh;
+}
+
+@layer components {
+	.clip-f-b {
+		animation: clip-f-b-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.clip-f-t {
+		animation: clip-f-t-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.clip-f-l {
+		animation: clip-f-l-animation 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.clip-f-r {
+		animation: clip-f-r-animation 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.carousel-t-r {
+		animation: carousel-t-r-animation 12s linear infinite;
+	}
+	.carousel-t-l {
+		animation: carousel-t-l-animation 20s linear infinite;
+	}
+
+	.hand-wave {
+		animation: hand-wave-animation 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+	}
+
+	.float-vertical {
+		animation: float-vertical-animation 3s ease-in-out infinite;
+	}
+
+	.card {
+		animation: card-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.card-enter {
+		animation: card-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.menu {
+		animation: menu-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.menu-enter {
+		animation: menu-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.blog-styles {
+		@apply space-y-6;
+		.highlight {
+			@apply inline text-link-light dark:text-link-dark;
+		}
+		p {
+			@apply text-balance;
+		}
+	}
+
+	.bg-pattern {
+		background-image: radial-gradient(
+			theme("colors.secondary.light") 3px,
+			transparent 3px
+		);
+		background-size: 92.5px 92.5px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.bg-pattern {
+			background-image: radial-gradient(
+				theme("colors.secondary.dark") 3px,
+				transparent 3px
+			);
+		}
+	}
+}
+
+h1 {
+	@apply text-6xl text-text-light dark:text-text-dark;
+	font-family: "Ramabhadra", sans-serif;
+	letter-spacing: -3%;
+}
+
+h2 {
+	@apply text-5xl font-bold text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: -1%;
+}
+
+h3 {
+	@apply text-4xl font-bold text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: -0.5%;
+}
+
+h4 {
+	@apply text-xl font-bold text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: -0.5%;
+}
+
+p {
+	@apply text-lg font-normal text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: 2%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
+@keyframes hand-wave-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(-10deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes card-enter {
+	from {
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes card-exit {
+	from {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+}
+
+@keyframes menu-enter {
+	from {
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes menu-exit {
+	from {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+	}
+}
+
+@keyframes carousel-t-r-animation {
+	from {
+		transform: translate(calc(-50%));
+	}
+	to {
+		transform: translate(calc(0% + 1rem));
+	}
+}
+
+@keyframes carousel-t-l-animation {
+	from {
+		transform: translate(calc(0%));
+	}
+	to {
+		transform: translate(calc(-50% - 1rem));
+	}
+}
+
+@keyframes clip-f-l-animation {
+	0% {
+		transform: translateX(-100%);
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+	}
+	100% {
+		transform: translateX(0);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes clip-f-r-animation {
+	0% {
+		transform: translateX(100%);
+		clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+	}
+	100% {
+		transform: translateX(0);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes clip-f-b-animation {
+	0% {
+		transform: translateY(100%);
+		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+	}
+	100% {
+		transform: translateY(0%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes clip-f-t-animation {
+	0% {
+		transform: translateY(-100%);
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+	100% {
+		transform: translateY(0%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes float-vertical-animation {
+	from,
+	to {
+	}
+	50% {
+		transform: translateY(1rem);
+	}
+}

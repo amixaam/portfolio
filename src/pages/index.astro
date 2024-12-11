@@ -1,11 +1,34 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ImageMe from "@assets/me.webp";
+import IconLink from "@components/IconLink.astro";
+
+import * as AboutMe from "@markdown/about.md";
+const title = AboutMe.frontmatter.title;
 ---
 
 <Layout>
-	<Welcome />
+	<main class="grid grid-cols-2 gap-8 relative content-min-h">
+		<Image
+			src={ImageMe}
+			alt="Myself staring in the distance, during day"
+			class="rounded-lg h-[70svh] object-cover"
+		/>
+		<article class="blog-styles flex flex-col justify-center">
+			<h3>{title}</h3>
+			<AboutMe.Content />
+
+			<section>
+				<IconLink href="/projects">Projects</IconLink>
+			</section>
+		</article>
+	</main>
 </Layout>
+
+<style>
+	.content-min-h {
+		min-height: calc(70svh);
+	}
+</style>
