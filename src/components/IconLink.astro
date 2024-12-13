@@ -1,4 +1,7 @@
 ---
+import Outgoing from "@assets/icons/outgoing.svg";
+import ArrowRight from "@assets/icons/arrow-right.svg";
+
 interface Props {
 	href: URL | string | null | undefined;
 }
@@ -6,6 +9,16 @@ interface Props {
 const { href } = Astro.props;
 ---
 
-<a href={href} class="text-text-light dark:text-text-dark">
+<a
+	href={href}
+	class="group flex h-fit w-full flex-row items-center gap-2
+                        transition-all hover:ml-1 focus:ml-1 active:ml-3 md:w-fit"
+>
+	<slot name="icon">
+		<Outgoing class="ic-link mr-2" />
+	</slot>
 	<slot />
+	<ArrowRight
+		class="scale-x-0 transition-all group-hover:scale-x-100 group-focus:scale-x-100"
+	/>
 </a>

@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
+import HandWave from "@assets/icons/hand-wave.svg";
+
 import ImageMe from "@assets/me.webp";
 import IconLink from "@components/IconLink.astro";
 
@@ -10,19 +12,24 @@ const title = AboutMe.frontmatter.title;
 ---
 
 <Layout>
-	<div class="grid grid-cols-2 gap-8 relative">
+	<div class="flex flex-row items-center justify-center gap-8">
 		<Image
 			src={ImageMe}
 			alt="Myself staring in the distance, during day"
-			class="rounded-lg object-cover size-96"
-			loading='eager'
+			class="rounded-lg object-cover max-w-[350px]"
+			loading="eager"
 		/>
-		<article class="blog-styles flex flex-col justify-center">
-			<h3>{title}</h3>
+		<article class="blog-styles flex flex-col justify-center max-w-[600px]">
+			<div class="flex flex-row gap-3 items-center">
+				<h3>{title}</h3>
+				<HandWave class="hand-wave size-8" />
+			</div>
+
 			<AboutMe.Content />
 
-			<section>
+			<section class="flex flex-row gap-8">
 				<IconLink href="/projects">Projects</IconLink>
+				<IconLink href="/contact">Contact me</IconLink>
 			</section>
 		</article>
 	</div>
