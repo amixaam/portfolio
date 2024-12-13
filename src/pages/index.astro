@@ -2,35 +2,59 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
-import HandWave from "@assets/icons/hand-wave.svg";
-
 import ImageMe from "@assets/me.webp";
+
+import HandWave from "@assets/icons/hand-wave.svg";
 import IconLink from "@components/IconLink.astro";
+import Location from "@assets/icons/location.svg";
 
 import * as AboutMe from "@markdown/about.md";
 const title = AboutMe.frontmatter.title;
 ---
 
 <Layout>
-	<div class="flex flex-row items-center justify-center gap-8">
-		<Image
-			src={ImageMe}
-			alt="Myself staring in the distance, during day"
-			class="rounded-lg object-cover max-w-[350px]"
-			loading="eager"
-		/>
-		<article class="blog-styles flex flex-col justify-center max-w-[600px]">
-			<div class="flex flex-row gap-3 items-center">
-				<h3>{title}</h3>
-				<HandWave class="hand-wave size-8" />
+	<div class="flex justify-center items-center">
+		<div
+			class="flex flex-col md:flex-row md:pt-10 lg:items-center justify-center gap-8 max-w-[1100px]"
+		>
+			<div
+				class="group relative w-full md:max-w-[40%] rounded-lg overflow-clip"
+			>
+				<Image
+					src={ImageMe}
+					alt="Myself staring in the distance, during day"
+					class="w-full object-cover aspect-[6/5] md:aspect-auto"
+					loading="eager"
+				/>
+				<div
+					class="group-hover:card-enter card absolute top-0 w-full p-4 flex flex-row gap-2 items-center bg-black/50 backdrop-blur-lg"
+				>
+					<Location />
+					<p>Cēsis, Latvia</p>
+				</div>
 			</div>
 
-			<AboutMe.Content />
+			<article
+				class="blog-styles flex flex-col justify-center w-full lg:w-auto"
+			>
+				<div class="flex flex-row gap-3 items-center w-fit">
+					<h3>{title}</h3>
+					<HandWave class="hand-wave size-8 fill-text-light dark:fill-text-dark" />
+				</div>
 
-			<section class="flex flex-row gap-8">
-				<IconLink href="/projects">Projects</IconLink>
-				<IconLink href="/contact">Contact me</IconLink>
-			</section>
-		</article>
+				<AboutMe.Content class="w-full md:w-fit" />
+
+				<div
+					class="flex flex-col md:flex-row flex-wrap gap-4 md:gap-8 w-fit"
+				>
+					<IconLink href="/projects">Projects</IconLink>
+					<IconLink
+						href="https://seafile.amixam.net/f/dfbe58b86010476d9bb1/"
+						>CV</IconLink
+					>
+					<IconLink href="/contact">Contact me</IconLink>
+				</div>
+			</article>
+		</div>
 	</div>
 </Layout>

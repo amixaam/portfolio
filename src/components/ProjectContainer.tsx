@@ -60,7 +60,7 @@ export function Accordion({ projects }: Props) {
 		return (
 			<div className="flex flex-row gap-4 items-center">
 				<p className="opacity-75">{year}</p>
-				<h3>{title}</h3>
+				<h3 className="group-hover:underline">{title}</h3>
 				{live && (
 					<div className="hidden rounded-full  border-2 border-link-light bg-bg-light px-5 py-2 md:flex dark:border-link-light dark:bg-secondary-dark">
 						<p className="text-md font-semibold leading-none">
@@ -122,7 +122,7 @@ export function Accordion({ projects }: Props) {
 			{projects.map((item, i) => {
 				return (
 					<AccordionItem key={i} value={`item-${i.toFixed()}`}>
-						<AccordionTrigger>
+						<AccordionTrigger className="hover:no-underline group">
 							<Title
 								live={item.data.live}
 								title={item.data.title}
@@ -131,11 +131,12 @@ export function Accordion({ projects }: Props) {
 						</AccordionTrigger>
 						<AccordionContent className="md:grid max-w-[100vw] md:grid-cols-2 space-y-8">
 							<div className="md:space-y-4">
-								<div className="flex flex-row gap-2">
+								<div className="flex flex-row gap-2 mb-4">
 									{item.data.technologies.map(
 										(tech, index) => (
 											<img
 												src={tech}
+												className="size-8 md:size-10 rounded-sm"
 												alt="Technology icon"
 											/>
 										),
@@ -176,8 +177,7 @@ export function Accordion({ projects }: Props) {
 													<img
 														src={image.src}
 														alt={
-															item.id +
-															" product"
+															item.id + " product"
 														}
 														className="rounded-lg"
 													/>
@@ -187,18 +187,18 @@ export function Accordion({ projects }: Props) {
 									</CarouselContent>
 									<CarouselNext className="right-4" />
 									<CarouselPrevious className="left-4" />
+									<div className="flex flex-row gap-2 justify-center absolute bottom-0 w-full">
+										{Array.from({ length: count }).map(
+											(_, i) => (
+												<p
+													className={`select-none text-4xl font-bold ${i + 1 === current ? "text-text-dark" : "text-muted-foreground"}`}
+												>
+													•
+												</p>
+											),
+										)}
+									</div>
 								</Carousel>
-								<div className="flex flex-row gap-2 justify-center">
-									{Array.from({ length: count }).map(
-										(_, i) => (
-											<p
-												className={`text-4xl font-bold ${i + 1 === current ? "text-text-light" : "text-muted-foreground"}`}
-											>
-												•
-											</p>
-										),
-									)}
-								</div>
 							</div>
 						</AccordionContent>
 					</AccordionItem>

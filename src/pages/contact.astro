@@ -1,0 +1,48 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import Github from "@assets/icons/github.svg";
+import LinkedIn from "@assets/icons/linkedin.svg";
+import Mail from "@assets/icons/mail.svg";
+import Instagram from "@assets/icons/instagram.svg";
+import IconLink from "@/components/IconLink.astro";
+
+const count = 7;
+
+const links = {
+	mail: "mailto:robertobrinko@gmail.com",
+	linkedin: "https://www.linkedin.com/in/robertsbrinkis/",
+	github: "https://github.com/amixaam",
+	instagram: "https://instagram.com/robisnis",
+};
+---
+
+<Layout>
+	<div
+		class="float-vertical overflow-clip relative w-full flex flex-col space-y-[-5.5rem] justify-center"
+	>
+		{
+			Array.from({ length: count }).map((_, i) => (
+				<p
+					class={`${i % 2 === 0 ? "clip-f-l" : "clip-f-r"} font-extrabold text-8xl leading-none select-none text-center uppercase`}
+					style={{
+						opacity: 1 - Math.pow(i / count, 0.5),
+					}}
+				>
+					get in touch
+				</p>
+			))
+		}
+	</div>
+	<div
+		class="flex flex-row items-center justify-center gap-8 *:flex-shrink-0
+						*:flex-grow-0 *:flex-nowrap lg:gap-32"
+	>
+		<div class="clip-f-b group flex flex-row gap-6">
+			<Github slot="icon" class="ic-link size-12" />
+            <LinkedIn class="ic-link" />
+            <Mail class="ic-link" />
+            <Instagram class="ic-link" />
+		</div>
+	</div>
+</Layout>
