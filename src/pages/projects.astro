@@ -1,8 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "src/layouts/Layout.astro";
+import { Accordion } from "@/components/ProjectContainer";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <Layout>
-	<p>Projects</p>
-	<a href="/">Home</a>
+	<div>
+		<Accordion projects={projects} client:idle />
+	</div>
 </Layout>

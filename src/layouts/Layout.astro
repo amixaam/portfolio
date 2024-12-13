@@ -1,12 +1,11 @@
 ---
-import "../app.css";
-
+import "@/styles/globals.css";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -14,9 +13,11 @@ import Navbar from "@components/Navbar.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Amixam</title>
 	</head>
-	<body>
+	<body class="min-h-full flex flex-col">
 		<Navbar />
-		<slot />
+		<main class="flex-1">
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>

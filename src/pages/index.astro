@@ -10,11 +10,12 @@ const title = AboutMe.frontmatter.title;
 ---
 
 <Layout>
-	<main class="grid grid-cols-2 gap-8 relative content-min-h">
+	<div class="grid grid-cols-2 gap-8 relative">
 		<Image
 			src={ImageMe}
 			alt="Myself staring in the distance, during day"
-			class="rounded-lg h-[70svh] object-cover"
+			class="rounded-lg object-cover size-96"
+			loading='eager'
 		/>
 		<article class="blog-styles flex flex-col justify-center">
 			<h3>{title}</h3>
@@ -24,11 +25,5 @@ const title = AboutMe.frontmatter.title;
 				<IconLink href="/projects">Projects</IconLink>
 			</section>
 		</article>
-	</main>
+	</div>
 </Layout>
-
-<style>
-	.content-min-h {
-		min-height: calc(70svh);
-	}
-</style>
