@@ -1,0 +1,32 @@
+---
+import "@/styles/globals.css";
+import Footer from "@components/Footer.astro";
+import Navbar from "@components/Navbar.astro";
+
+interface Props {
+	type?: "centered" | "normal";
+	title?: string;
+}
+
+const { type = "normal", title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ? `${title} | Amixam` : "Amixam"}</title>
+	</head>
+	<body class="min-h-full flex flex-col clip-f-b">
+		<Navbar />
+		<main
+			class={`flex-1 ${type === "centered" ? "items-center flex justify-center" : ""}`}
+		>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

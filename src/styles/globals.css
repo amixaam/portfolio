@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Ramabhadra&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	@apply bg-bg-light dark:bg-bg-dark;
+
+	background-image: radial-gradient(
+		theme("colors.secondary.light") 2px,
+		transparent 3px
+	);
+	background-size: 92.5px 92.5px;
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		background-image: radial-gradient(
+			theme("colors.secondary.dark") 3px,
+			transparent 3px
+		);
+	}
+}
+
+body {
+	@apply space-y-8 mx-small-app md:mx-default-app py-small-app;
+}
+
+@layer components {
+	.clip-f-b {
+		animation: clip-f-b-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.clip-f-t {
+		animation: clip-f-t-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.clip-f-l {
+		animation: clip-f-l-animation 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.clip-f-r {
+		animation: clip-f-r-animation 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.carousel-t-r {
+		animation: carousel-t-r-animation 12s linear infinite;
+	}
+	.carousel-t-l {
+		animation: carousel-t-l-animation 20s linear infinite;
+	}
+
+	.hand-wave {
+		animation: hand-wave-animation 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+	}
+
+	.float-vertical {
+		animation: float-vertical-animation 3s ease-in-out infinite;
+	}
+
+	.card {
+		animation: card-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.card-enter {
+		animation: card-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.menu {
+		animation: menu-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.menu-enter {
+		animation: menu-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.blog-styles {
+		@apply space-y-6;
+		.highlight {
+			@apply inline text-link-light dark:text-link-dark;
+		}
+		p {
+			@apply text-balance;
+		}
+		strong {
+			@apply text-link-light;
+		}
+	}
+
+	.ic-link {
+		@apply bg-secondary-light fill-text-light dark:bg-secondary-dark dark:fill-text-dark rounded-md size-10;
+	}
+
+	.svg-larger > svg {
+		@apply size-8;
+	}
+
+	.bg-pattern {
+		background-image: radial-gradient(
+			theme("colors.secondary.light") 3px,
+			transparent 3px
+		);
+		background-size: 92.5px 92.5px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.bg-pattern {
+			background-image: radial-gradient(
+				theme("colors.secondary.dark") 3px,
+				transparent 3px
+			);
+		}
+	}
+}
+
+h1 {
+	@apply text-6xl text-text-light dark:text-text-dark;
+	font-family: "Ramabhadra", sans-serif;
+	letter-spacing: -3%;
+}
+
+h2 {
+	@apply text-5xl font-bold text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: -1%;
+}
+
+h3 {
+	@apply text-3xl font-bold text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: -0.5%;
+}
+
+h4 {
+	@apply text-2xl font-bold text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: -0.5%;
+}
+
+p,
+a {
+	@apply text-xl font-normal text-text-light dark:text-text-dark;
+	font-family: "Archivo", sans-serif;
+	letter-spacing: 2%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
+@keyframes hand-wave-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(-10deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes card-enter {
+	from {
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes card-exit {
+	from {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+}
+
+@keyframes menu-enter {
+	from {
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes menu-exit {
+	from {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+	to {
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+	}
+}
+
+@keyframes carousel-t-r-animation {
+	from {
+		transform: translate(calc(-50%));
+	}
+	to {
+		transform: translate(calc(0% + 1rem));
+	}
+}
+
+@keyframes carousel-t-l-animation {
+	from {
+		transform: translate(calc(0%));
+	}
+	to {
+		transform: translate(calc(-50% - 1rem));
+	}
+}
+
+@keyframes clip-f-l-animation {
+	0% {
+		transform: translateX(-100%);
+		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+	}
+	100% {
+		transform: translateX(0);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes clip-f-r-animation {
+	0% {
+		transform: translateX(100%);
+		clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+	}
+	100% {
+		transform: translateX(0);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes clip-f-b-animation {
+	0% {
+		transform: translateY(100%);
+		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+	}
+	100% {
+		transform: translateY(0%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes clip-f-t-animation {
+	0% {
+		transform: translateY(-100%);
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+	100% {
+		transform: translateY(0%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes float-vertical-animation {
+	from,
+	to {
+	}
+	50% {
+		transform: translateY(1rem);
+	}
+}
+
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 0 0% 3.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 0 0% 3.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0% 3.9%;
+		--primary: 0 0% 9%;
+		--primary-foreground: 0 0% 98%;
+		--secondary: 0 0% 96.1%;
+		--secondary-foreground: 0 0% 9%;
+		--muted: 0 0% 96.1%;
+		--muted-foreground: 0 0% 45.1%;
+		--accent: 0 0% 96.1%;
+		--accent-foreground: 0 0% 9%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 0 0% 89.8%;
+		--input: 0 0% 89.8%;
+		--ring: 0 0% 3.9%;
+		--chart-1: 12 76% 61%;
+		--chart-2: 173 58% 39%;
+		--chart-3: 197 37% 24%;
+		--chart-4: 43 74% 66%;
+		--chart-5: 27 87% 67%;
+		--radius: 0.5rem;
+	}
+	.dark {
+		--background: 0 0% 3.9%;
+		--foreground: 0 0% 98%;
+		--card: 0 0% 3.9%;
+		--card-foreground: 0 0% 98%;
+		--popover: 0 0% 3.9%;
+		--popover-foreground: 0 0% 98%;
+		--primary: 0 0% 98%;
+		--primary-foreground: 0 0% 9%;
+		--secondary: 0 0% 14.9%;
+		--secondary-foreground: 0 0% 98%;
+		--muted: 0 0% 14.9%;
+		--muted-foreground: 0 0% 63.9%;
+		--accent: 0 0% 14.9%;
+		--accent-foreground: 0 0% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 0 0% 14.9%;
+		--input: 0 0% 30%;
+		--ring: 0 0% 83.1%;
+		--chart-1: 220 70% 50%;
+		--chart-2: 160 60% 45%;
+		--chart-3: 30 80% 55%;
+		--chart-4: 280 65% 60%;
+		--chart-5: 340 75% 55%;
+	}
+}

@@ -1,0 +1,18 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import { Accordion } from "@/components/ProjectContainer";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+// Sort projects by date, newest first
+const sortedProjects = projects.sort((a, b) => {
+	const dateA = new Date(a.data.date.split("-").reverse().join("-"));
+	const dateB = new Date(b.data.date.split("-").reverse().join("-"));
+	return dateB.getTime() - dateA.getTime();
+});
+---
+
+<Layout title="Projects">
+	<Accordion projects={sortedProjects} client:load />
+</Layout>

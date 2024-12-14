@@ -1,0 +1,26 @@
+---
+import ArrowRight from "@icons/arrow-right.svg";
+
+const iconCount = 20;
+const icons = Array.from({ length: iconCount });
+
+const title = "Amixam";
+---
+
+<nav class="clip-f-b overflow-clip flex flex-row space-x-8 items-center justify-center sm:justify-normal">
+	<a href="/" class="hover:underline underline md:no-underline active:scale-95 transition-all"
+		><h1 class="text-nowrap uppercase">{title}</h1></a
+	>
+
+	<div class="hidden sm:flex items-center flex-row overflow-clip">
+		<div class="carousel-t-r flex gap-8">
+			{icons.map((_, i) => <ArrowRight class="arrow" />)}
+		</div>
+	</div>
+</nav>
+
+<style>
+	.arrow {
+		@apply bg-secondary-light fill-text-light dark:bg-secondary-dark dark:fill-text-dark size-20;
+	}
+</style>
