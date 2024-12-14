@@ -7,8 +7,6 @@ This project was remade in astro, from Laravel, React and Inertia, old branch is
 ## Features
 
 - ✅ Minimal design
-- ✅ Dark mode
-- ✅ Blog
 - ✅ Projects
 - ✅ SEO
 
