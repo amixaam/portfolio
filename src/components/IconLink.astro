@@ -11,7 +11,7 @@ const { href } = Astro.props;
 
 <a
 	href={href}
-	class="group inline-flex items-center gap-2 relative transition-transform hover:translate-x-1 hover:underline focus:translate-x-1 active:translate-x-3"
+	class="group inline-flex items-center gap-2 relative transition-transform hover:translate-x-1 underline md:no-underline  hover:underline focus:translate-x-1 active:translate-x-3"
 >
 	<slot name="icon">
 		<Outgoing class="ic-link mr-2" />

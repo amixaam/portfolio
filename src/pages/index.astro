@@ -7,15 +7,17 @@ import ImageMe from "@assets/me.webp";
 import HandWave from "@assets/icons/hand-wave.svg";
 import IconLink from "@components/IconLink.astro";
 import Location from "@assets/icons/location.svg";
+import Globe from "@assets/icons/globe.svg";
+import CV from "@assets/icons/cv.svg";
 
 import * as AboutMe from "@markdown/about.md";
 const title = AboutMe.frontmatter.title;
 ---
 
-<Layout>
+<Layout type="centered">
 	<div class="flex justify-center items-center">
 		<div
-			class="flex flex-col md:flex-row md:pt-10 lg:items-center justify-center gap-8 max-w-[1100px]"
+			class="flex flex-col md:flex-row lg:items-center justify-center gap-8 max-w-[1100px]"
 		>
 			<div
 				class="group relative w-full md:max-w-[40%] rounded-lg overflow-clip"
@@ -29,8 +31,8 @@ const title = AboutMe.frontmatter.title;
 				<div
 					class="group-hover:card-enter card absolute top-0 w-full p-4 flex flex-row gap-2 items-center bg-black/50 backdrop-blur-lg"
 				>
-					<Location />
-					<p>Cēsis, Latvia</p>
+					<Location class="fill-text-dark" />
+					<p class="text-text-dark">Prague, Czech Republic</p>
 				</div>
 			</div>
 
@@ -39,7 +41,9 @@ const title = AboutMe.frontmatter.title;
 			>
 				<div class="flex flex-row gap-3 items-center w-fit">
 					<h3>{title}</h3>
-					<HandWave class="hand-wave size-8 fill-text-light dark:fill-text-dark" />
+					<HandWave
+						class="hand-wave size-8 fill-text-light dark:fill-text-dark"
+					/>
 				</div>
 
 				<AboutMe.Content class="w-full md:w-fit" />
@@ -47,10 +51,16 @@ const title = AboutMe.frontmatter.title;
 				<div
 					class="flex flex-col md:flex-row flex-wrap gap-4 md:gap-8 w-fit"
 				>
-					<IconLink href="/projects">Projects</IconLink>
+					<IconLink href="/projects">
+						<Globe slot="icon" class="ic-link mr-2 p-1" />
+						Projects</IconLink
+					>
 					<IconLink
 						href="https://seafile.amixam.net/f/dfbe58b86010476d9bb1/"
-						>CV</IconLink
+					>
+						<CV slot="icon" class="ic-link mr-2 p-1" />
+
+						CV</IconLink
 					>
 					<IconLink href="/contact">Contact me</IconLink>
 				</div>

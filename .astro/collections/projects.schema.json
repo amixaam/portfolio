@@ -7,8 +7,9 @@
         "title": {
           "type": "string"
         },
-        "year": {
-          "type": "number"
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{2}-\\d{2}-\\d{4}$"
         },
         "live": {
           "type": "boolean"
@@ -36,10 +37,13 @@
         "images": {
           "type": "object",
           "properties": {
-            "darkMode": {
-              "type": "boolean"
+            "light": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
-            "images": {
+            "dark": {
               "type": "array",
               "items": {
                 "type": "string"
@@ -47,7 +51,7 @@
             }
           },
           "required": [
-            "images"
+            "light"
           ],
           "additionalProperties": false
         },
@@ -57,7 +61,7 @@
       },
       "required": [
         "title",
-        "year",
+        "date",
         "live",
         "technologies",
         "images"

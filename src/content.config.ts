@@ -9,21 +9,18 @@ const projects = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
-			year: z.number(),
+			date: z.string().regex(/^\d{2}-\d{2}-\d{4}$/), // Validates format DD-MM-YYYY
 			live: z.boolean(),
-
 			technologies: z.array(z.string()),
-
 			links: z
 				.object({
 					github: z.string().url().optional(),
 					website: z.string().url().optional(),
 				})
 				.optional(),
-
 			images: z.object({
-				darkMode: z.boolean().optional(),
-				images: z.array(image()),
+				light: z.array(image()),
+				dark: z.array(image()).optional(),
 			}),
 		}),
 });

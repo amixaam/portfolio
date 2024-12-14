@@ -94,6 +94,10 @@ body {
 		@apply bg-secondary-light fill-text-light dark:bg-secondary-dark dark:fill-text-dark rounded-md size-10;
 	}
 
+	.svg-larger > svg {
+		@apply size-8;
+	}
+
 	.bg-pattern {
 		background-image: radial-gradient(
 			theme("colors.secondary.light") 3px,
@@ -315,7 +319,7 @@ a {
 		--destructive: 0 62.8% 30.6%;
 		--destructive-foreground: 0 0% 98%;
 		--border: 0 0% 14.9%;
-		--input: 0 0% 14.9%;
+		--input: 0 0% 30%;
 		--ring: 0 0% 83.1%;
 		--chart-1: 220 70% 50%;
 		--chart-2: 160 60% 45%;
