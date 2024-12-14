@@ -13,7 +13,7 @@ This project was remade in astro, from Laravel, React and Inertia, old branch is
 ## Getting Started
 
 ```bash
-bun install
+bun install && bunx astro sync
 ```
 
 Run the development server:
