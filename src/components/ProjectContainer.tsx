@@ -230,6 +230,7 @@ export function Accordion({ projects }: Props) {
 																	.dark,
 															).src
 														}
+														loading="eager"
 														alt={
 															item.id + " product"
 														}
