@@ -230,6 +230,8 @@ export function Accordion({ projects }: Props) {
 																	.dark,
 															).src
 														}
+														height={400}
+														width={400}
 														loading="eager"
 														alt={
 															item.id + " product"
