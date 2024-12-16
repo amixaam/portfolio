@@ -6,9 +6,10 @@ import Navbar from "@components/Navbar.astro";
 interface Props {
 	type?: "centered" | "normal";
 	title?: string;
+	canonicalURL?: string;
 }
 
-const { type = "normal", title } = Astro.props;
+const { type = "normal", title, canonicalURL } = Astro.props;
 
 const metaTitle = "Roberts Brinkis - Portfolio";
 const author = "Roberts Brinkis";
@@ -43,7 +44,7 @@ const keywords =
 		<meta name="theme-color" content="#6E84EE" />
 
 		<!-- Canonical URL -->
-		<link rel="canonical" href={url} />
+		<link rel="canonical" href={canonicalURL ?? url} />
 
 		<title>{title ? `${title} | Amixam` : "Amixam"}</title>
 	</head>

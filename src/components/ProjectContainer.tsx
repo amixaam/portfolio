@@ -111,7 +111,7 @@ export function Accordion({ projects }: Props) {
 		return (
 			<div className="flex flex-row gap-4 items-center">
 				<p className="opacity-75">{formatDate(date)}</p>
-				<h3 className="group-hover:underline">{title}</h3>
+				<h2 className="text-3xl group-hover:underline">{title}</h2>
 				{live && (
 					<div className="hidden rounded-full border-2 border-link-light bg-bg-light px-5 py-2 md:flex dark:border-link-light dark:bg-secondary-dark">
 						<p className="text-md font-semibold leading-none">
