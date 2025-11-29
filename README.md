@@ -1,7 +1,6 @@
 # Portfolio
 
 This is an [Astro](https://astro.build/) project. 
-This project was remade in astro, from Laravel, React and Inertia, old branch is available.
 
 ## Features
 
