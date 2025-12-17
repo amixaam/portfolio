@@ -11,7 +11,7 @@ technologies:
     - "/icons/javascript.svg"
 
 links:
-    website: https://photos.amixam.net/
+    website: https://photos.brinkis.net/
     github: https://github.com/amixaam/photo-gallery
 
 images:
