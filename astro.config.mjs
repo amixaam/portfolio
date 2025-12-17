@@ -13,8 +13,4 @@ export default defineConfig({
 		}),
 		react(),
 	],
-	experimental: {
-		responsiveImages: true,
-		svg: true,
-	},
 });
