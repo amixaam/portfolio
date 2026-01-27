@@ -1,7 +1,7 @@
 ---
 title: photo-gallery
 date: 06-07-2024
-live: true
+live: false
 technologies:
     - "/icons/laravel.svg"
     - "/icons/inertia.svg"
@@ -11,7 +11,6 @@ technologies:
     - "/icons/javascript.svg"
 
 links:
-    website: https://photos.brinkis.net/
     github: https://github.com/amixaam/photo-gallery
 
 images:
