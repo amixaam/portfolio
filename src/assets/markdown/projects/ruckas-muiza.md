@@ -26,5 +26,3 @@ images:
 ---
 
 **Ruckas Muiža** is a team project built using the Tallstack framework. I took on the role of design lead, ensuring the website’s aesthetics and user experience were top-notch.
-
-Collaboratively created with a focus on elegant design and functionality.

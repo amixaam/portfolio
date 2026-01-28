@@ -11,6 +11,8 @@ import CV from "@assets/icons/cv.svg";
 
 import * as AboutMe from "@markdown/about.md";
 const title = AboutMe.frontmatter.title;
+
+const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
 ---
 
 <Layout type="centered">
@@ -55,7 +57,7 @@ const title = AboutMe.frontmatter.title;
 						Projects</IconLink
 					>
 					<IconLink
-						href="https://cloud.amixam.net/s/2is8PkV07sttbWQ/download"
+						href={CV_DOWNLOAD_URL}
 					>
 						<CV slot="icon" class="ic-link mr-2 p-1" />
 

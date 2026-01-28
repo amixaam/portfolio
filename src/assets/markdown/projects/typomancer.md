@@ -21,5 +21,3 @@ images:
 ---
 
 **Typomancer** is an online Unity 2D endless dungeon runner game. It features Laravel as the backend to manage logins, leaderboards, and Stripe integration.
-
-Enjoy fun gameplay with robust backend support.

@@ -26,5 +26,3 @@ images:
 ---
 
 **CENE** is a ticket-selling platform for theatrical and cinema releases. Users can view new and upcoming events, select seats, leave reviews, and download PDFs of their ticket QR codes.
-
-Experience a seamless way to purchase and manage event tickets.

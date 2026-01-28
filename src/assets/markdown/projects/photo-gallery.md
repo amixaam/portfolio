@@ -25,5 +25,3 @@ images:
 ---
 
 **photo-gallery** is a personal image gallery designed for sharing and viewing photos. It features a unique design and robust admin tools.
-
-Explore and enjoy the beautifully crafted interface.
