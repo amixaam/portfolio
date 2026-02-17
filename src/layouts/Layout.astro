@@ -48,7 +48,8 @@ const keywords =
 
 		<title>{metaTitle}</title>
 	</head>
-	<body class="min-h-full flex flex-col clip-f-b">
+	<body class="min-h-full flex flex-col">
+		<canvas id="dot-grid-canvas" aria-hidden="true"></canvas>
 		<Navbar />
 		<main
 			class={`flex-1 ${type === "centered" ? "items-center flex justify-center" : ""}`}
@@ -56,5 +57,130 @@ const keywords =
 			<slot />
 		</main>
 		<Footer />
+		<script is:inline>
+			(() => {
+				const canvas = document.getElementById("dot-grid-canvas");
+				if (!(canvas instanceof HTMLCanvasElement)) return;
+
+				const ctx = canvas.getContext("2d");
+				if (!ctx) return;
+
+				const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+				const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+				const settings = {
+					spacing: 92.5,
+					light: {
+						background: "#EEFAFF",
+						dot: "#C9CFEC",
+						radius: 2,
+					},
+					dark: {
+						background: "#090B15",
+						dot: "#1A2637",
+						radius: 3,
+					},
+					wave: {
+						wavelength: 280,
+						speed: 145,
+						amplitude: 1.35,
+						falloff: 760,
+						offsetScale: 2.8,
+					},
+				};
+
+				let width = 0;
+				let height = 0;
+				let dpr = 1;
+				let frameId = 0;
+				let startTime = performance.now();
+
+				const getPalette = () =>
+					darkModeQuery.matches ? settings.dark : settings.light;
+
+				const resize = () => {
+					width = window.innerWidth;
+					height = window.innerHeight;
+					dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+					canvas.width = Math.round(width * dpr);
+					canvas.height = Math.round(height * dpr);
+					canvas.style.width = `${width}px`;
+					canvas.style.height = `${height}px`;
+					ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+				};
+
+				const draw = (timestamp) => {
+					const palette = getPalette();
+					const { spacing, wave } = settings;
+					const elapsedSeconds = (timestamp - startTime) / 1000;
+					const centerX = width * 0.5;
+					const centerY = height * 0.5;
+
+					ctx.fillStyle = palette.background;
+					ctx.fillRect(0, 0, width, height);
+					ctx.fillStyle = palette.dot;
+
+					for (let y = -spacing; y <= height + spacing; y += spacing) {
+						for (let x = -spacing; x <= width + spacing; x += spacing) {
+							const dx = x - centerX;
+							const dy = y - centerY;
+							const distance = Math.hypot(dx, dy);
+
+							let offsetX = 0;
+							let offsetY = 0;
+							let radius = palette.radius;
+
+							if (!reducedMotionQuery.matches) {
+								const phase = distance - elapsedSeconds * wave.speed;
+								const oscillation = Math.sin(
+									(phase / wave.wavelength) * Math.PI * 2,
+								);
+								const envelope = Math.exp(-Math.abs(phase) / wave.falloff);
+								const ripple = oscillation * envelope * wave.amplitude;
+
+								if (distance > 0.001) {
+									const inverseDistance = 1 / distance;
+									offsetX = dx * inverseDistance * ripple * wave.offsetScale;
+									offsetY = dy * inverseDistance * ripple * wave.offsetScale;
+								}
+
+								radius = Math.max(0.75, palette.radius + ripple * 0.3);
+							}
+
+							ctx.beginPath();
+							ctx.arc(x + offsetX, y + offsetY, radius, 0, Math.PI * 2);
+							ctx.fill();
+						}
+					}
+
+					if (!reducedMotionQuery.matches) {
+						frameId = window.requestAnimationFrame(draw);
+					}
+				};
+
+				const restart = () => {
+					window.cancelAnimationFrame(frameId);
+					startTime = performance.now();
+
+					if (reducedMotionQuery.matches) {
+						draw(startTime);
+						return;
+					}
+
+					frameId = window.requestAnimationFrame(draw);
+				};
+
+				resize();
+				restart();
+
+				window.addEventListener("resize", () => {
+					resize();
+					restart();
+				});
+				darkModeQuery.addEventListener("change", restart);
+				reducedMotionQuery.addEventListener("change", restart);
+			})();
+		</script>
 	</body>
 </html>

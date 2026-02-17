@@ -48,24 +48,9 @@ interface Props {
 }
 
 export function Accordion({ projects }: Props) {
-	const [isDarkMode, setIsDarkMode] = useState(false);
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(0);
 	const [count, setCount] = useState(0);
-
-	useEffect(() => {
-		const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-		setIsDarkMode(darkModeQuery.matches);
-
-		const darkModeListener = (e: MediaQueryListEvent) => {
-			setIsDarkMode(e.matches);
-		};
-		darkModeQuery.addEventListener("change", darkModeListener);
-
-		return () => {
-			darkModeQuery.removeEventListener("change", darkModeListener);
-		};
-	}, []);
 
 	useEffect(() => {
 		if (!api) {
@@ -79,25 +64,6 @@ export function Accordion({ projects }: Props) {
 			setCurrent(api.selectedScrollSnap() + 1);
 		});
 	}, [api]);
-
-	const getImageForMode = (
-		lightImage: ImageProps,
-		index: number,
-		darkImages?: ImageProps[],
-	) => {
-		if (isDarkMode && darkImages && darkImages[index]) {
-			return darkImages[index];
-		}
-		return lightImage;
-	};
-
-	const formatDate = (dateString: string) => {
-		const [day, month, year] = dateString.split("-");
-		const date = new Date(`${year}-${month}-${day}`);
-		return new Intl.DateTimeFormat("en-US", {
-			year: "numeric",
-		}).format(date);
-	};
 
 	const Title = ({
 		date,
@@ -218,27 +184,51 @@ export function Accordion({ projects }: Props) {
 								>
 									<CarouselContent>
 										{item.data.images.light.map(
-											(image, index) => (
-												<CarouselItem key={index}>
-													<img
-														src={
-															getImageForMode(
-																image,
-																index,
-																item.data.images
-																	.dark,
-															).src
-														}
-														height={400}
-														width={400}
-														loading="eager"
-														alt={
-															item.id + " product"
-														}
-														className="rounded-lg"
-													/>
-												</CarouselItem>
-											),
+											(image, index) => {
+												const darkImage =
+													item.data.images.dark?.[
+														index
+													];
+												const isPriorityImage =
+													i === 0 && index === 0;
+
+												return (
+													<CarouselItem key={index}>
+														<picture>
+															{darkImage && (
+																<source
+																	srcSet={
+																		darkImage.src
+																	}
+																	media="(prefers-color-scheme: dark)"
+																/>
+															)}
+															<img
+																src={image.src}
+																height={
+																	image.height
+																}
+																width={
+																	image.width
+																}
+																loading={
+																	isPriorityImage
+																		? "eager"
+																		: "lazy"
+																}
+																fetchPriority={
+																	isPriorityImage
+																		? "high"
+																		: "auto"
+																}
+																decoding="async"
+																alt={`${item.id} project screenshot ${index + 1}`}
+																className="rounded-lg"
+															/>
+														</picture>
+													</CarouselItem>
+												);
+											},
 										)}
 									</CarouselContent>
 									<CarouselNext className="right-4 dark:*:stroke-white" />

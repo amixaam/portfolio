@@ -13,45 +13,60 @@
 html {
 	scroll-behavior: smooth;
 	@apply bg-bg-light dark:bg-bg-dark;
-
-	background-image: radial-gradient(
-		theme("colors.secondary.light") 2px,
-		transparent 3px
-	);
-	background-size: 92.5px 92.5px;
-}
-
-@media (prefers-color-scheme: dark) {
-	html {
-		background-image: radial-gradient(
-			theme("colors.secondary.dark") 3px,
-			transparent 3px
-		);
-	}
 }
 
 body {
 	@apply space-y-8 mx-small-app md:mx-default-app py-small-app;
+	position: relative;
+	z-index: 1;
+}
+
+#dot-grid-canvas {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
+	display: block;
+}
+
+body > :not(#dot-grid-canvas) {
+	position: relative;
+	z-index: 1;
+}
+
+@supports (view-transition-name: root) {
+	@view-transition {
+		navigation: auto;
+	}
+
+	::view-transition-old(root) {
+		animation: page-clip 1s cubic-bezier(0.16, 1, 0.3, 1) reverse both;
+	}
+
+	::view-transition-new(root) {
+		animation: page-clip 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
 }
 
 @layer components {
-	.clip-f-b {
-		animation: clip-f-b-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+	.ticker {
+		@apply flex-1 min-w-0 overflow-hidden;
 	}
-	.clip-f-t {
-		animation: clip-f-t-animation 1s cubic-bezier(0.16, 1, 0.3, 1);
+	.ticker-track {
+		@apply flex w-max;
+		animation: ticker-marquee var(--ticker-duration, 16s) linear infinite;
+		will-change: transform;
+		transform: translate3d(0, 0, 0);
 	}
-	.clip-f-l {
-		animation: clip-f-l-animation 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	.ticker-track-reverse {
+		animation-direction: reverse;
 	}
-	.clip-f-r {
-		animation: clip-f-r-animation 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-	}
-	.carousel-t-r {
-		animation: carousel-t-r-animation 12s linear infinite;
-	}
-	.carousel-t-l {
-		animation: carousel-t-l-animation 20s linear infinite;
+	.ticker-segment {
+		@apply flex items-center shrink-0;
+		gap: var(--ticker-gap, 2rem);
+		padding-right: var(--ticker-gap, 2rem);
 	}
 
 	.hand-wave {
@@ -152,6 +167,11 @@ a {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
 	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 1ms !important;
+	}
 }
 
 @keyframes hand-wave-animation {
@@ -202,61 +222,23 @@ a {
 	}
 }
 
-@keyframes carousel-t-r-animation {
+@keyframes ticker-marquee {
 	from {
-		transform: translate(calc(-50%));
+		transform: translate3d(0, 0, 0);
 	}
 	to {
-		transform: translate(calc(0% + 1rem));
+		transform: translate3d(
+			calc(-1 * var(--ticker-segment-width, 1000px)),
+			0,
+			0
+		);
 	}
 }
 
-@keyframes carousel-t-l-animation {
-	from {
-		transform: translate(calc(0%));
-	}
-	to {
-		transform: translate(calc(-50% - 1rem));
-	}
-}
-
-@keyframes clip-f-l-animation {
-	0% {
-		transform: translateX(-100%);
-		clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-	}
-	100% {
-		transform: translateX(0);
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-	}
-}
-
-@keyframes clip-f-r-animation {
-	0% {
-		transform: translateX(100%);
-		clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-	}
-	100% {
-		transform: translateX(0);
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-	}
-}
-
-@keyframes clip-f-b-animation {
+@keyframes page-clip {
 	0% {
 		transform: translateY(100%);
 		clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
-	}
-	100% {
-		transform: translateY(0%);
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-	}
-}
-
-@keyframes clip-f-t-animation {
-	0% {
-		transform: translateY(-100%);
-		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 	}
 	100% {
 		transform: translateY(0%);
