@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import ImageMe from "@assets/me.webp";
 
 import HandWave from "@assets/icons/hand-wave.svg";
@@ -8,17 +9,40 @@ import IconLink from "@components/IconLink.astro";
 import Location from "@assets/icons/location.svg";
 import Globe from "@assets/icons/globe.svg";
 import CV from "@assets/icons/cv.svg";
+import Mail from "@assets/icons/mail.svg";
 
 import * as AboutMe from "@markdown/about.md";
 const title = AboutMe.frontmatter.title;
 
 const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
+const canonicalURL = "https://brinkis.net";
+
+const projects = await getCollection("projects");
+
+const sortedProjects = projects.sort((a, b) => {
+	const dateA = new Date(a.data.date.split("-").reverse().join("-"));
+	const dateB = new Date(b.data.date.split("-").reverse().join("-"));
+	return dateB.getTime() - dateA.getTime();
+});
+
+const featuredProjects = sortedProjects.slice(0, 3);
+const liveProjectsCount = projects.filter((project) => project.data.live).length;
+
+const cleanExcerpt = (markdown: string, maxLength = 120) => {
+	const plainText = markdown
+		.replace(/[*_`>#-]/g, "")
+		.replace(/\s+/g, " ")
+		.trim();
+
+	if (plainText.length <= maxLength) return plainText;
+	return `${plainText.slice(0, maxLength).trimEnd()}...`;
+};
 ---
 
-<Layout type="centered">
-	<div class="flex justify-center items-center">
+<Layout canonicalURL={canonicalURL}>
+	<div class="mx-auto w-full max-w-[1100px] space-y-16 md:space-y-24">
 		<div
-			class="flex flex-col md:flex-row lg:items-center justify-center gap-8 max-w-[1100px]"
+			class="flex flex-col md:flex-row lg:items-center justify-center gap-8"
 		>
 			<div
 				class="group relative w-full md:max-w-[40%] rounded-lg overflow-clip"
@@ -47,7 +71,9 @@ const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
 					/>
 				</div>
 
-				<AboutMe.Content class="w-full md:w-fit" />
+				<div class="w-full md:w-fit">
+					<AboutMe.Content />
+				</div>
 
 				<div
 					class="flex flex-col md:flex-row flex-wrap gap-4 md:gap-8 w-fit"
@@ -56,9 +82,7 @@ const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
 						<Globe slot="icon" class="ic-link mr-2 p-1" />
 						Projects</IconLink
 					>
-					<IconLink
-						href={CV_DOWNLOAD_URL}
-					>
+					<IconLink href={CV_DOWNLOAD_URL}>
 						<CV slot="icon" class="ic-link mr-2 p-1" />
 
 						CV</IconLink
@@ -67,5 +91,91 @@ const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
 				</div>
 			</article>
 		</div>
+
+		<section class="grid gap-4 md:grid-cols-3">
+			<div
+				class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-6 space-y-2"
+			>
+				<p class="text-base uppercase">Focus</p>
+				<h4 class="text-xl">Product-grade frontend</h4>
+				<p class="text-base">
+					Accessible, responsive interfaces built with clean architecture.
+				</p>
+			</div>
+			<div
+				class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-6 space-y-2"
+			>
+				<p class="text-base uppercase">Stack</p>
+				<h4 class="text-xl">Web + Native</h4>
+				<p class="text-base">
+					React, Astro, Laravel, and React Native working as one product system.
+				</p>
+			</div>
+			<div
+				class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-6 space-y-2"
+			>
+				<p class="text-base uppercase">Track record</p>
+				<h4 class="text-xl">{projects.length} shipped projects</h4>
+				<p class="text-base">
+					From internal tools to live public products ({liveProjectsCount} currently live).
+				</p>
+			</div>
+		</section>
+
+		<section class="space-y-8">
+			<div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+				<div class="space-y-2">
+					<h3>Selected Work</h3>
+					<p class="max-w-[72ch]">
+						A snapshot of recent projects with strong emphasis on quality, clarity,
+						and user experience.
+					</p>
+				</div>
+				<IconLink href="/projects">
+					<Globe slot="icon" class="ic-link mr-2 p-1" />
+					View all projects
+				</IconLink>
+			</div>
+
+			<div class="grid gap-8 md:grid-cols-3">
+				{
+					featuredProjects.map((project) => (
+						<article class="space-y-4">
+							<Image
+								src={project.data.images.light[0]}
+								alt={`${project.data.title} preview`}
+								class="w-full rounded-lg aspect-[4/3] object-cover"
+								loading="lazy"
+							/>
+							<div class="space-y-2">
+								<p class="text-base uppercase">{project.data.date}</p>
+								<h4>{project.data.title}</h4>
+								<p class="text-base">{cleanExcerpt(project.body)}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section
+			class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-8 space-y-6"
+		>
+			<h3>Let&apos;s Build Something Useful</h3>
+			<p class="max-w-[72ch]">
+				I&apos;m available for freelance and product collaborations where design quality and
+				engineering discipline both matter.
+			</p>
+			<div class="flex flex-col md:flex-row flex-wrap gap-4 md:gap-8 w-fit">
+				<IconLink href="/contact">
+					<Mail slot="icon" class="ic-link mr-2 p-1" />
+					Start a conversation
+				</IconLink>
+				<IconLink href={CV_DOWNLOAD_URL}>
+					<CV slot="icon" class="ic-link mr-2 p-1" />
+					Download CV
+				</IconLink>
+			</div>
+		</section>
 	</div>
 </Layout>

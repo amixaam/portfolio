@@ -2,11 +2,13 @@
 title: "Hey, I'm Roberts"
 ---
 
-I’m a passionate software engineer from Latvia, always eager to
-learn. I play the piano and flute, and have contributed to
-orchestral bands and choirs.
+I’m a software engineer from Latvia, currently based in Prague, focused on
+building polished web and mobile products that feel fast, clear, and reliable.
 
-Programming has been my favorite activity since I was 10,
-starting with **Scratch** and progressing to **Python**, **C#**, **PHP**,
-**JavaScript**, and **Kotlin**. My relentless pursuit of excellence
-drives my success.
+I started programming at 10 with **Scratch**, then moved through **Python**,
+**C#**, **PHP**, **JavaScript**, and **Kotlin**. That broad stack experience helps me
+move comfortably from product design to backend logic to frontend implementation.
+
+Outside of engineering, I play piano and flute, and have performed in choirs and
+orchestras. Music keeps my creative standards high and strongly shapes how I think
+about rhythm, detail, and user experience.

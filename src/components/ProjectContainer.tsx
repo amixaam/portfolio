@@ -52,6 +52,24 @@ export function Accordion({ projects }: Props) {
 	const [current, setCurrent] = useState(0);
 	const [count, setCount] = useState(0);
 
+	const formatDate = (value: string) => {
+		const [day, month, year] = value.split("-");
+		const parsed = new Date(`${year}-${month}-${day}`);
+		return new Intl.DateTimeFormat("en", {
+			year: "numeric",
+			month: "short",
+			day: "numeric",
+		}).format(parsed);
+	};
+
+	const getTechnologyAlt = (iconPath: string) => {
+		return iconPath
+			.split("/")
+			.pop()
+			?.replace(".svg", "")
+			.replace(/-/g, " ") ?? "Technology";
+	};
+
 	useEffect(() => {
 		if (!api) {
 			return;
@@ -75,8 +93,11 @@ export function Accordion({ projects }: Props) {
 		live: boolean;
 	}) => {
 		return (
-			<div className="flex flex-row gap-4 items-center">
-				<h2 className="text-3xl group-hover:underline">{title}</h2>
+			<div className="flex flex-row gap-4 items-center justify-between w-full">
+				<div className="space-y-1 text-left">
+					<h2 className="text-3xl group-hover:underline">{title}</h2>
+					<p className="text-base">{formatDate(date)}</p>
+				</div>
 				{live && (
 					<div className="hidden rounded-full border-2 border-link-light bg-bg-light px-5 py-2 md:flex dark:border-link-light dark:bg-secondary-dark">
 						<p className="text-md font-semibold leading-none">
@@ -149,7 +170,7 @@ export function Accordion({ projects }: Props) {
 												key={index}
 												src={tech}
 												className="size-8 md:size-10 rounded-sm"
-												alt="Technology icon"
+												alt={`${getTechnologyAlt(tech)} icon`}
 											/>
 										),
 									)}

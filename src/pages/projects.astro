@@ -2,6 +2,9 @@
 import Layout from "src/layouts/Layout.astro";
 import { Accordion } from "@/components/ProjectContainer";
 import { getCollection } from "astro:content";
+import IconLink from "@/components/IconLink.astro";
+import Github from "@assets/icons/github.svg";
+import Mail from "@assets/icons/mail.svg";
 
 const projects = await getCollection("projects");
 
@@ -11,9 +14,58 @@ const sortedProjects = projects.sort((a, b) => {
 	const dateB = new Date(b.data.date.split("-").reverse().join("-"));
 	return dateB.getTime() - dateA.getTime();
 });
+
+const liveProjectsCount = sortedProjects.filter((project) => project.data.live).length;
+const totalTechnologies = new Set(
+	sortedProjects.flatMap((project) => project.data.technologies),
+).size;
 const canonicalURL = "https://brinkis.net/projects";
 ---
 
 <Layout title="Projects" canonicalURL={canonicalURL}>
-	<Accordion projects={sortedProjects} client:load />
+	<div class="mx-auto w-full max-w-[1100px] space-y-10 md:space-y-14">
+		<section class="space-y-6">
+			<div class="space-y-3">
+				<h2 class="text-4xl md:text-5xl">Projects</h2>
+				<p class="max-w-[72ch]">
+					Selected product work across web, mobile, and interactive media.
+					Each entry includes context, stack, and outcome.
+				</p>
+			</div>
+
+			<div class="grid gap-4 sm:grid-cols-3">
+				<div
+					class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-5 space-y-1"
+				>
+					<p class="text-base uppercase">Total projects</p>
+					<h4 class="text-2xl">{sortedProjects.length}</h4>
+				</div>
+				<div
+					class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-5 space-y-1"
+				>
+					<p class="text-base uppercase">Live deployments</p>
+					<h4 class="text-2xl">{liveProjectsCount}</h4>
+				</div>
+				<div
+					class="rounded-lg border-2 border-secondary-light dark:border-secondary-dark bg-bg-light-50 dark:bg-bg-dark-50 p-5 space-y-1"
+				>
+					<p class="text-base uppercase">Technologies used</p>
+					<h4 class="text-2xl">{totalTechnologies}</h4>
+				</div>
+			</div>
+
+			<div class="flex flex-col md:flex-row gap-4 md:gap-8">
+				<IconLink href="https://github.com/brinkis">
+					<Github slot="icon" class="ic-link mr-2 p-1" />
+					GitHub profile
+				</IconLink>
+				<IconLink href="/contact">
+					<Mail slot="icon" class="ic-link mr-2 p-1" />
+					Discuss a project
+				</IconLink>
+			</div>
+		</section>
+
+		<Accordion projects={sortedProjects} client:load />
+	</div>
 </Layout>

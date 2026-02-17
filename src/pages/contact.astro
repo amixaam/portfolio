@@ -19,8 +19,8 @@ const links = {
 const canonicalURL = "https://brinkis.net/contact";
 ---
 
-<Layout type="centered" title="Contacts" canonicalURL={canonicalURL}>
-	<div class="flex flex-col gap-24 w-full">
+<Layout title="Contacts" canonicalURL={canonicalURL}>
+	<div class="mx-auto w-full max-w-[1100px] flex flex-col gap-16 md:gap-24">
 		<section
 			class="float-vertical overflow-clip relative w-full flex flex-col space-y-[-2rem] md:space-y-[-5.5rem] justify-center"
 		>
@@ -37,6 +37,36 @@ const canonicalURL = "https://brinkis.net/contact";
 				))
 			}
 		</section>
+
+		<section class="grid gap-8 md:grid-cols-2">
+			<article class="blog-styles space-y-4">
+				<h3>Open for collaborations</h3>
+				<p>
+					If you are building a product and need focused design + engineering execution,
+					I&apos;m happy to help.
+				</p>
+				<p>
+					Best way to reach me is email:
+					<a
+						href={links.mail}
+						class="underline md:no-underline hover:underline text-link-light"
+					>
+						robertobrinko@gmail.com
+					</a>
+				</p>
+			</article>
+			<article class="blog-styles space-y-4">
+				<h3>Where to find me</h3>
+				<p>
+					You can also connect through LinkedIn, follow side projects on GitHub,
+					or reach out on Instagram.
+				</p>
+				<p>
+					I usually reply quickly for project inquiries and collaboration requests.
+				</p>
+			</article>
+		</section>
+
 		<section
 			class="flex flex-row items-center justify-center gap-8 *:flex-shrink-0
 	*:flex-grow-0 *:flex-nowrap lg:gap-32"
