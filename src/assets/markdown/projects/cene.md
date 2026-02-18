@@ -1,6 +1,6 @@
 ---
 title: CENE
-date: 01-01-2024
+date: 01-01-2020
 live: false
 technologies:
     - "/icons/laravel.svg"

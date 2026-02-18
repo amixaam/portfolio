@@ -1,6 +1,6 @@
 ---
 title: photo-gallery
-date: 06-07-2024
+date: 03-01-2020
 live: false
 technologies:
     - "/icons/laravel.svg"

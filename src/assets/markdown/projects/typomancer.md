@@ -1,6 +1,6 @@
 ---
 title: Typomancer
-date: 02-02-2024
+date: 02-01-2020
 live: false
 technologies:
     - "/icons/unity.svg"

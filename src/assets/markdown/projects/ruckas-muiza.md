@@ -1,6 +1,6 @@
 ---
 title: Ruckas Muiža
-date: 03-03-2024
+date: 29-01-2020
 live: true
 technologies:
     - "/icons/laravel.svg"

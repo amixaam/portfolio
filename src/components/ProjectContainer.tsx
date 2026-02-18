@@ -131,6 +131,8 @@ export function Accordion({ projects }: Props) {
 			className="w-full dark:dark"
 		>
 			{projects.map((item, i) => {
+				const hasMultipleImages = item.data.images.light.length > 1;
+
 				return (
 					<AccordionItem key={i} value={`item-${i.toFixed()}`}>
 						<AccordionTrigger className="hover:no-underline group svg-larger">
@@ -178,7 +180,7 @@ export function Accordion({ projects }: Props) {
 							<div className="max-w-sm !mt-0 justify-self-end">
 								<Carousel
 									opts={{
-										loop: true,
+										loop: hasMultipleImages,
 									}}
 									setApi={setApi}
 								>
@@ -231,20 +233,24 @@ export function Accordion({ projects }: Props) {
 											},
 										)}
 									</CarouselContent>
-									<CarouselNext className="right-4 dark:*:stroke-white" />
-									<CarouselPrevious className="left-4 dark:*:stroke-white" />
-									<div className="flex flex-row gap-2 justify-center absolute bottom-0 w-full">
-										{Array.from({ length: count }).map(
-											(_, i) => (
-												<p
-													key={i}
-													className={`select-none text-4xl font-bold ${i + 1 === current ? "text-text-dark" : "text-muted-foreground"}`}
-												>
-													•
-												</p>
-											),
-										)}
-									</div>
+									{hasMultipleImages && (
+										<>
+											<CarouselNext className="right-4 dark:*:stroke-white" />
+											<CarouselPrevious className="left-4 dark:*:stroke-white" />
+											<div className="flex flex-row gap-2 justify-center absolute bottom-0 w-full">
+												{Array.from({
+													length: count,
+												}).map((_, i) => (
+													<p
+														key={i}
+														className={`select-none text-4xl font-bold ${i + 1 === current ? "text-text-dark" : "text-muted-foreground"}`}
+													>
+														•
+													</p>
+												))}
+											</div>
+										</>
+									)}
 								</Carousel>
 							</div>
 						</AccordionContent>
