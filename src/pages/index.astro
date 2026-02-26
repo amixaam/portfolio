@@ -29,12 +29,6 @@ const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
 					class="w-full object-cover aspect-[6/5] md:aspect-auto"
 					loading="eager"
 				/>
-				<div
-					class="group-hover:card-enter card absolute top-0 w-full p-4 flex flex-row gap-2 items-center bg-black/50 backdrop-blur-lg"
-				>
-					<Location class="fill-text-dark" />
-					<p class="text-text-dark">Prague, Czech Republic</p>
-				</div>
 			</div>
 
 			<article
@@ -56,9 +50,7 @@ const CV_DOWNLOAD_URL = "https://cloud.amixam.net/s/V21OCBwC8vAZABZ/download";
 						<Globe slot="icon" class="ic-link mr-2 p-1" />
 						Projects</IconLink
 					>
-					<IconLink
-						href={CV_DOWNLOAD_URL}
-					>
+					<IconLink href={CV_DOWNLOAD_URL}>
 						<CV slot="icon" class="ic-link mr-2 p-1" />
 
 						CV</IconLink
